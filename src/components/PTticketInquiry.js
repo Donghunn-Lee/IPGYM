@@ -1,13 +1,8 @@
-// import React from 'react';
-// import Button from './Button';
+import React from "react";
+import Button from "./Button";
 
+const PTticketInquiry = () => {
+  return;
+};
 
-// const PTticketInquiry = () => {
-//   return (
-
-//   );
-// };
-
-// export default PTticketInquiry;
-
-
+export default PTticketInquiry;

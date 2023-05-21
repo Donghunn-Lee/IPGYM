@@ -1,11 +1,8 @@
-// import React from 'react';
-// import Button from './Button';
+import React from "react";
+import Button from "./Button";
 
+const PTReservation = () => {
+  return;
+};
 
-// const PTReservation = () => {
-//   return (
-
-//   );
-// };
-
-// export default PTReservation;
+export default PTReservation;
