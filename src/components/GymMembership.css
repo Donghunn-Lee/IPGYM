@@ -1,0 +1,92 @@
+.membership-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.membership-heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.membership-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.info-label {
+  font-weight: bold;
+  margin-right: 8px;
+  color: #666;
+}
+
+.info-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.usage-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.usage-history {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.usage-history li {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.usage-history li:hover {
+  background-color: #f8f8f8;
+}
+
+.usage-history li.active {
+  background-color: #eaf6ff;
+}
+
+/* Empty state message */
+.empty-state {
+  text-align: center;
+  color: #999;
+}
+
+.empty-state p {
+  margin-top: 16px;
+}
+
+/* Button styling */
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #555;
+}
