@@ -26,6 +26,7 @@ const Login = (props) => {
   }, [isAuthenticated, props]);
 
   if (props.IsAuthenticated) {
+    console.log("이거 되는거노?");
     return <Navigate to="/mainpage" />;
   }
 

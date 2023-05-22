@@ -10,16 +10,20 @@ const AdminLogin = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsAdmin(true);
+    console.log("Logged in:", { email, password ,code});
+      console.log('Login success');
   };
 
   useEffect(() => {
     if (isAdmin) {
       console.log(isAdmin);
+      
       props.setIsAdmin(true);
     }
   }, [isAdmin, props]);
 
   if (props.isAdmin) {
+    console.log("시이발 이거 왜 안되는데 쉬이발");
     return <Navigate to="/admin" />;
   }
 
@@ -51,7 +55,7 @@ const AdminLogin = (props) => {
             onChange={(e) => setCode(e.target.value)}
           />
         </label>
-        <button type="submit">로그인</button>
+        <button type="submit" onClick={handleSubmit}>로그인</button>
       </form>
     </div>
   );
