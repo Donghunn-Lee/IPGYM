@@ -50,6 +50,7 @@ function PT() {
       packageId: selectedPackage.id,
       package: selectedPackage.name,
       trainer: selectedPackage.trainer,
+      remaining: selectedPackage.remaining,
       date: reservationDate,
       time: reservationTime,
     };
@@ -65,6 +66,7 @@ function PT() {
           {availablePackages.map((pkg) => (
             <option key={pkg.id} value={pkg.id}>
               {pkg.name} (트레이너: {pkg.trainer})
+              
             </option>
           ))}
         </select>
@@ -72,6 +74,7 @@ function PT() {
           <div className="selected-package">
             <p>{selectedPackage.name}</p>
             <p>트레이너: {selectedPackage.trainer}</p>
+            <p>남은 이용 횟수: {selectedPackage.remaining}</p>
           </div>
         )}
       </div>
