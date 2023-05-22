@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./SignupForm.css";
+import "./Signup.css";
 
-const SignupForm = () => {
+const Signup = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,4 +50,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default Signup;
