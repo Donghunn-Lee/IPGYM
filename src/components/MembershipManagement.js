@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './GymMembership.css';
+import './MembershipManagement.css';
 
 const MembershipManagement = () => {
   const [expirationDate, setExpirationDate] = useState('');
