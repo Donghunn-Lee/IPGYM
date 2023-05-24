@@ -3,8 +3,13 @@ import "./Signup.css";
 
 const Signup = (props) => {
   const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +30,27 @@ const Signup = (props) => {
           onChange={(e) => setName(e.target.value)}
         />
       </label>
+      <div className="gender">
+        <label className="=gender">
+          성별:
+          <input
+            type="radio"
+            value="남성"
+            checked={gender === "남성"}
+            onChange={handleGenderChange}
+          />
+          남성
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="여성"
+            checked={gender === "여성"}
+            onChange={handleGenderChange}
+          />
+          여성
+        </label>
+      </div>
       <label className="form-label">
         이메일:
         <input

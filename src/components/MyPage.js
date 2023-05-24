@@ -56,7 +56,7 @@ const MyPage = () => {
   return (
     <div className="container">
       <div className="header">
-        <div>반갑습니다😊</div>
+        <div>회원님😊</div>
       </div>
 
       <div className="exercise-goal">
@@ -70,7 +70,7 @@ const MyPage = () => {
         </select>
       </div>
 
-      <div className="gender">
+      {/* <div className="gender">
         <h2>성별</h2>
         <label>
           <input
@@ -90,7 +90,7 @@ const MyPage = () => {
           />
           여성
         </label>
-      </div>
+      </div> */}
       <div className="measurement">
         <h2>키와 체중 입력</h2>
         <div>
