@@ -1,31 +1,28 @@
-import React, { useState, useEffect} from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminLogin = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false); // 수정: 초기값을 false로 설정
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수를 가져옴
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsAdmin(true);
-    console.log("Logged in:", { email, password ,code});
-      console.log('Login success');
+    console.log("Logged in:", { email, password, code });
+    console.log("Login success");
   };
 
   useEffect(() => {
     if (isAdmin) {
       console.log(isAdmin);
-      
       props.setIsAdmin(true);
+      navigate("/admin"); // navigate 함수를 사용하여 /admin 경로로 이동
     }
-  }, [isAdmin, props]);
-
-  if (props.isAdmin) {
-    console.log("시이발 이거 왜 안되는데 쉬이발");
-    return <Navigate to="/admin" />;
-  }
+  }, [isAdmin, props, navigate]);
 
   return (
     <div>
@@ -55,7 +52,7 @@ const AdminLogin = (props) => {
             onChange={(e) => setCode(e.target.value)}
           />
         </label>
-        <button type="submit" onClick={handleSubmit}>로그인</button>
+        <button type="submit">로그인</button>
       </form>
     </div>
   );
