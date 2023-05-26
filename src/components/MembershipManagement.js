@@ -1,38 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./MembershipManagement.css";
+// import React from 'react';
+// import Button from './Button';
 
-const MembershipManagement = () => {
-  const [expirationDate, setExpirationDate] = useState("");
-  const [daysRemaining, setDaysRemaining] = useState(0);
-  const [usageHistory, setUsageHistory] = useState([]);
-  const [selectedUsage, setSelectedUsage] = useState(null);
 
-  // 예제로 사용할 데이터
-  const membershipData = {
-    expirationDate: "2023-12-31",
-    usageHistory: [
-      { date: "2023-01-15", time: "10:30" },
-      { date: "2023-02-05", time: "15:45" },
-      { date: "2023-03-20", time: "18:20" },
-    ],
-  };
 
-  useEffect(() => {
-    // 만료 날짜와 사용 기록 초기화
-    setExpirationDate(membershipData.expirationDate);
-    setUsageHistory(membershipData.usageHistory);
-
-    // 남은 일 수 계산
-    const today = new Date();
-    const expiration = new Date(membershipData.expirationDate);
-    const diffTime = Math.abs(expiration - today);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    setDaysRemaining(diffDays);
-  }, []);
-
-  const handleUsageClick = (index) => {
-    setSelectedUsage(index === selectedUsage ? null : index);
-  };
+// const MembershipManagement = () => {
+  
+//   return (
 
   return (
     <div className="membership-container">

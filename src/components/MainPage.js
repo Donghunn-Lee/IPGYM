@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import "./MainPage.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Button from "./Button";
+import MyPage from "./MyPage";
 
 const MainPage = () => {
+  const [showMyPage, setShowMyPage] = useState(false);
+
   const handleButtonClick = (feature) => {
-    console.log(`Clicked ${feature}`);
+    if (feature === "마이페이지") {
+      setShowMyPage(true);
+    } else {
+      console.log(`Clicked ${feature}`);
+    }
   };
 
   const [showSignupForm, setShowSignupForm] = useState(false);
@@ -14,45 +21,39 @@ const MainPage = () => {
   };
 
   return (
-    <div className="main-page">
-      <div className="banner">
-        <h1 className="main-title">Welcome to IPGYM</h1>
-        <p className="slogan">머라고 하셧슴미까 해엉님?</p>
-        <img
-          src="/지금 뭐라고 하셨습니까 회원님.png"
-          alt="Fitness Image"
-          className="banner-image"
-        />
-        <img
-        style={{width:"200px", position:"absolute", top:"30%", left:"60%"}}
-          src="/흰둥이법규.png"
-          alt="Fitness Image"
-          className="banner-image"
-        />
-      </div>
+    <Router>
+      <div className="main-page">
+        <h1 className="main-title">Main Page</h1>
+        <div className="button-container">
+          <Button
+            text="마이페이지"
+            onClick={() => handleButtonClick("마이페이지")}
+          />
+          <Button
+            text="PT 이용권"
+            onClick={() => handleButtonClick("PT 이용권")}
+          />
+          <Button text="PT 예약" onClick={() => handleButtonClick("PT 예약")} />
+          <Button
+            text="헬스장 이용권"
+            onClick={() => handleButtonClick("헬스장 이용권")}
+          />
+        </div>
 
-      <div className="button-container">
-        <NavLink exact to="/login" activeClassName="active">
-          <button className="button" onClick={() => handleButtonClick("로그인")}>
-            로그인
-          </button>
-        </NavLink>
-        <NavLink exact to="/mypage" activeClassName="active">
-          <button className="button" onClick={() => handleButtonClick("마이페이지")}>
-            마이페이지
-          </button>
-        </NavLink>
-        <NavLink exact to="/pt" activeClassName="active">
-          <button className="button" onClick={() => handleButtonClick("PT 예약/조회")}>
-            PT 예약/조회
-          </button>
-        </NavLink>
-        <NavLink exact to="/membership" activeClassName="active">
-          <button className="button" onClick={() => handleButtonClick("헬스장 이용권")}>
-            헬스장 이용권
-          </button>
-        </NavLink>
+        <Routes>
+          <Route path="/" element={<MainContent showMyPage={showMyPage} />} />
+          <Route path="/myPage" element={<MyPage />} />
+        </Routes>
       </div>
+    </Router>
+  );
+};
+
+const MainContent = ({ showMyPage }) => {
+  return showMyPage ? null : (
+    <div>
+      {/* 메인페이지의 내용 */}
+      <Link to="/myPage">마이페이지로 이동</Link>
     </div>
   );
 };
