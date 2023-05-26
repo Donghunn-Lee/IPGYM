@@ -39,7 +39,7 @@ const UsageStatistics = () => {
       <div className="chart-container">
         {showChart ? (
           <div>
-            <h3>PT 회원별 월별 통계</h3>
+            <h3>PT 회원 수 월별 통계</h3>
             <LineChart width={1000} height={600} data={ptData}>
               <XAxis dataKey="month" />
               <YAxis />
@@ -51,7 +51,7 @@ const UsageStatistics = () => {
           </div>
         ) : (
           <div>
-            <h3>회원별 월별 이용 통계</h3>
+            <h3>회원 수 월별 이용 통계</h3>
             <LineChart width={1000} height={600} data={usageData}>
               <XAxis dataKey="month" />
               <YAxis />
