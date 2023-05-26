@@ -1,15 +1,16 @@
 .membership-container {
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 40px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 60px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
   background-color: #f5f5f5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 .membership-heading {
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
@@ -24,22 +25,30 @@
 }
 
 .info-label {
+  font-size: 24px;
   font-weight: bold;
   margin-right: 8px;
   color: #666;
 }
 
 .info-value {
+  font-size: 24px;
   font-weight: 500;
   color: #333;
 }
 
 .usage-heading {
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
   margin-top: 24px;
   margin-bottom: 12px;
   color: #333;
+}
+
+.usage-allday{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: right;
 }
 
 .usage-history {
@@ -49,8 +58,9 @@
 }
 
 .usage-history li {
-  margin-bottom: 8px;
-  padding: 8px;
+  font-size: 25px;
+  margin-bottom: 20px;
+  padding: 20px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -58,35 +68,37 @@
 }
 
 .usage-history li:hover {
-  background-color: #f8f8f8;
+  background-color: #f1f1ee;
 }
 
 .usage-history li.active {
-  background-color: #eaf6ff;
+  background-color: #469bdb;
 }
 
-/* Empty state message */
-.empty-state {
-  text-align: center;
-  color: #999;
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  flex-direction: row; 
 }
 
-.empty-state p {
-  margin-top: 16px;
-}
-
-/* Button styling */
 .button {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  background-color: #2196f3;
   border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+
+
 .button:hover {
-  background-color: #333;
+  background-color: #1976d2;
 }
