@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import './MSuse.css'; // CSS 파일을 import
 
-const UsageStatistics = () => {
+const MSuse = () => {
   const [showChart, setShowChart] = useState(false);
 
   // 회원별 월별 이용 통계 데이터 예시
@@ -67,4 +67,4 @@ const UsageStatistics = () => {
   );
 };
 
-export default UsageStatistics;
+export default MSuse;
