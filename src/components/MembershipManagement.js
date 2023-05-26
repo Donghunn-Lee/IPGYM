@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Button from "./Button";
-import { NavLink } from "react-router-dom";
 import './MembershipManagement.css';
 
 
@@ -58,25 +56,7 @@ const MembershipManagement = () => {
         </div>
       </div>
 
-          <div className="button-container">
-          <NavLink exact to="/mypage" activeClassName="active">
-            <Button
-              text="마이페이지"
-              onClick={() => handleButtonClick("마이페이지")}
-            />
-          </NavLink>
-  
-          <NavLink exact to="/pt" activeClassName="active">
-            <Button text="PT 예약/조회" onClick={() => handleButtonClick("PT")} />
-          </NavLink>
-  
-          <NavLink exact to="/membership" activeClassName="active">
-            <Button
-              text="헬스장 이용권"
-              onClick={() => handleButtonClick("헬스장 이용권")}
-            />
-          </NavLink>
-        </div>
+          
         
       <div className="membership-container">
         <h3 className="usage-heading">이용 기록</h3>
