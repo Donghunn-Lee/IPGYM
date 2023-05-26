@@ -11,7 +11,7 @@ import AdminLogin from "./components/AdminLogin";
 import Admin from "./components/Admin";
 import MemberManage from "./components/management/MemberManage";
 import PTManage from "./components/management/PTManage";
-import Ticket from "./components/management/Ticket";
+import Msuse from "./components/management/MSuse";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -60,7 +60,7 @@ const App = () => {
             />
             <Route path="/membermanage" element={<MemberManage />} />
             <Route path="/ptmanage" element={<PTManage />} />
-            <Route path="/ticket" element={<Ticket />} />
+            <Route path="/msuse" element={<Msuse />} />
             <Route path="/" element={<Navigate to={redirectPath} />} />
           </Routes>
         </div>
