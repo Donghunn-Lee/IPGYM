@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import Button from "./Button";
 import { NavLink } from "react-router-dom";
-import "./MainPage.css"; // CSS 파일 import
+import "./MainPage.css";
 
 const MainPage = () => {
   const handleButtonClick = (feature) => {
     console.log(`Clicked ${feature}`);
   };
 
-  const [showSignupForm, setShowSignupForm] = useState(false); // 회원가입 폼을 나타내는 상태 변수
+  const [showSignupForm, setShowSignupForm] = useState(false);
 
   const toggleSignupForm = () => {
     setShowSignupForm(!showSignupForm);
@@ -16,32 +15,36 @@ const MainPage = () => {
 
   return (
     <div className="main-page">
-      <h1 className="main-title">Main Page</h1>
+      <div className="banner">
+        <h1 className="main-title">Welcome to IPGYM</h1>
+        <p className="slogan">머라고 하셧슴미까 해엉님?</p>
+        <img
+          src="/지금 뭐라고 하셨습니까 회원님.png"
+          alt="Fitness Image"
+          className="banner-image"
+        />
+      </div>
+
       <div className="button-container">
-       
-        {/* <NavLink exact to="/login" activeClassName="active">
-          <Button text="로그인" onClick={() => handleButtonClick("로그인")} />
-        </NavLink> */}
-        <NavLink exact to="/mypage" activeClassName="active">
-          <Button
-            text="마이페이지"
-            onClick={() => handleButtonClick("마이페이지")}
-          />
+        <NavLink exact to="/login" activeClassName="active">
+          <button className="button" onClick={() => handleButtonClick("로그인")}>
+            로그인
+          </button>
         </NavLink>
-        {/* <NavLink exact to="/ptticket" activeClassName="active">
-          <Button
-            text="PT 이용권"
-            onClick={() => handleButtonClick("PT 이용권")}
-          />
-        </NavLink> */}
+        <NavLink exact to="/mypage" activeClassName="active">
+          <button className="button" onClick={() => handleButtonClick("마이페이지")}>
+            마이페이지
+          </button>
+        </NavLink>
         <NavLink exact to="/pt" activeClassName="active">
-          <Button text="PT 예약/조회" onClick={() => handleButtonClick("PT")} />
+          <button className="button" onClick={() => handleButtonClick("PT 예약/조회")}>
+            PT 예약/조회
+          </button>
         </NavLink>
         <NavLink exact to="/membership" activeClassName="active">
-          <Button
-            text="헬스장 이용권"
-            onClick={() => handleButtonClick("헬스장 이용권")}
-          />
+          <button className="button" onClick={() => handleButtonClick("헬스장 이용권")}>
+            헬스장 이용권
+          </button>
         </NavLink>
       </div>
     </div>
