@@ -23,6 +23,12 @@ const MainPage = () => {
           alt="Fitness Image"
           className="banner-image"
         />
+        <img
+        style={{width:"200px", position:"absolute", top:"30%", left:"60%"}}
+          src="/흰둥이법규.png"
+          alt="Fitness Image"
+          className="banner-image"
+        />
       </div>
 
       <div className="button-container">
