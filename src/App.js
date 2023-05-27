@@ -20,7 +20,6 @@ const App = () => {
   const redirectPath = isAuthenticated ? "/mainpage" : "/login";
   const adminPath = isAdmin ? "/admin" : "/adminlogin";
 
-  console.log(isAdmin);
 
   return (
     <BrowserRouter>

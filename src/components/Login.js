@@ -1,32 +1,37 @@
 import React, { useState, useEffect} from "react";
 import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 import "./Login.css";
+
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // 로그인 처리 로직 추가
-    console.log("Logged in:", { email, password });
-    setIsAuthenticated(true);
-    console.log('Login success');
-    console.log(isAuthenticated);
-    // 서버로 로그인 데이터를 전송하거나 다른 작업을 수행할 수 있습니다.
+    try {
+      const response = await axios.post("http://43.200.171.222:8080/auth/login", {
+        email: email,
+        password: password,
+      }, );
+
+      console.log(response);
+      localStorage.setItem('token',response.data.accessToken);
+      localStorage.setItem('user',email);
+      
+      setIsAuthenticated(true);
+      props.setIsAuthenticated(true);
+      console.log('Login success');
+    } catch (error) {
+      console.error(error);
+      alert("로그인에 실패하였습니다. 알맞은 이메일과 비밀번호를 입력해주세요.")
+    }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      
-      console.log(isAuthenticated);
-      props.setIsAuthenticated(true);
-    }
-  }, [isAuthenticated, props]);
 
   if (props.IsAuthenticated) {
-    console.log("이거 되는거노?");
     return <Navigate to="/mainpage" />;
   }
 
@@ -51,7 +56,7 @@ const Login = (props) => {
           />
         </label>
         <button type="submit" onClick={handleSubmit}>로그인</button>
-        <Link to="/signup">회원가입</Link>
+        <Link to="/signup">회원가입</Link>  
       </form>
       <Link id="manager-login" to="/adminlogin">관리자 로그인</Link>
     </div>

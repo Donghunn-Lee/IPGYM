@@ -1,21 +1,40 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Signup.css";
 
 const Signup = (props) => {
   const [name, setName] = useState("");
-  const [gender, setGender] = useState("");
+  // const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState('에러가 낫서요 ㅠㅠ');
 
-  const handleGenderChange = (e) => {
-    setGender(e.target.value);
-  };
+
+  // const handleGenderChange = (e) => {
+  //   setGender(e.target.value);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 여기서 폼 데이터를 처리하는 로직을 추가할 수 있습니다.
-    console.log("Submitted:", { name, email, password });
-    // 폼 데이터를 서버로 전송하거나 다른 작업을 수행할 수 있습니다.
+    console.log(email,password,name);
+    axios.post('http://43.200.171.222:8080/auth/signup', {
+      email: email,
+      password: password,
+      name: name
+    })
+    .then((response) => {
+      if (response.data) {
+        console.log(response);
+        alert('Register success')
+        window.location.href = '/login';} // 로그인 화면으로 이동
+      else window.location.href = '/mainpage';
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(errorMessage);
+      
+    });
+    console.log(localStorage.getItem('token'));
   };
 
   return (
@@ -30,7 +49,7 @@ const Signup = (props) => {
           onChange={(e) => setName(e.target.value)}
         />
       </label>
-      <div className="gender">
+      {/* <div className="gender">
         <label className="=gender">
           성별:
           <input
@@ -50,7 +69,7 @@ const Signup = (props) => {
           />
           여성
         </label>
-      </div>
+      </div> */}
       <label className="form-label">
         이메일:
         <input
