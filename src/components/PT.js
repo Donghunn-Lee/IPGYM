@@ -22,7 +22,7 @@ function PT() {
   useEffect(() => {
     handlePTsubscriptionLoad();
     console.log(reservationDate);
-  });
+  }, []);
 
   useEffect(() => {
     handleReservationHistory();
