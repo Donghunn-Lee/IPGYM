@@ -21,12 +21,12 @@ const MSuse = () => {
     { month: '9월', Members: 98 },
     { month: '10월', Members: 103 },
     { month: '11월', Members: 120 },
-    { month: '12월', Members: 140 },
+    { month: '12월', Members: 130 },
   ],
   [//2023년
-    { month: '1월', Members: 170 },
-    { month: '2월', Members: 200 },
-    { month: '3월', Members: 188 },
+    { month: '1월', Members: 180 },
+    { month: '2월', Members: 170 },
+    { month: '3월', Members: 170 },
     { month: '4월', Members: 150 },
     { month: '5월', Members: 129 },
     { month: '6월', Members: 140 },
@@ -131,7 +131,7 @@ const MSuse = () => {
             <h3>PT 회원 수 {years[yearIndex]} 통계</h3>
             <LineChart width={950} height={550} data={ptData[yearIndex]}>
               <XAxis dataKey="month" />
-              <YAxis />
+              <YAxis domain={[0, 55]}/>
               <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
               <Tooltip />
               <Legend />
@@ -143,7 +143,7 @@ const MSuse = () => {
             <h3>회원 수 {years[yearIndex]} 통계</h3>
             <LineChart width={950} height={550} data={usageData[yearIndex]}>
               <XAxis dataKey="month" />
-              <YAxis />
+              <YAxis domain={[0,180]}/>
               <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
               <Tooltip />
               <Legend />
