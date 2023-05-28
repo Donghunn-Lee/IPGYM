@@ -7,7 +7,8 @@ function PT() {
   const [reservationDate, setReservationDate] = useState('');
   const [reservation, setReservation] = useState('');
   const [reservationHistory, setReservationHistory] = useState([]);
-  const [trainers, setTrainers] = useState([]); // PT 트레이너 목록
+  const [trainerlist, setTrainerList] = useState([]); // PT 트레이너 목록
+  const [reservationTrainerId,setReservationTrainerId]=useState("");
 
   const token = localStorage.getItem('token');
 
@@ -22,10 +23,15 @@ function PT() {
   useEffect(() => {
     handlePTsubscriptionLoad();
     console.log(reservationDate);
-  });
+  }, []);
+
+  useEffect(() => {
+    console.log(reservationTrainerId);
+  }, [reservationTrainerId]);
 
   useEffect(() => {
     handleReservationHistory();
+    console.log()
   }, []);
 
   const handlePTsubscriptionLoad = () => {
@@ -37,7 +43,7 @@ function PT() {
       })
       .then(response => {
         setPTsubscription(response.data.availableCount);
-        console.log(response);
+        console.log(response.data);
       })
       .catch(error => console.log(error));
   }
@@ -46,7 +52,7 @@ function PT() {
     axios
       .post("http://43.200.171.222:8080/api/reservations", {
         reservationTime: reservation,
-        reservationTrainerId: trainers // 선택한 트레이너 ID 사용
+        reservationTrainerId: reservationTrainerId // 선택한 트레이너 ID 사용
       }, {
         headers: {
           Authorization: 'Bearer ' + token
@@ -90,9 +96,15 @@ function PT() {
 
   useEffect(() => {
     axios
-      .get("http://43.200.171.222:8080/api/trainers")
+      .get("http://43.200.171.222:8080/api/trainer", {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        }
+      })
       .then(response => {
-        setTrainers(response.data);
+        setTrainerList(response.data);
+        console.log(response.data);
+        console.log(trainerlist);
       })
       .catch(error => console.log(error));
   }, []);
@@ -107,11 +119,11 @@ function PT() {
         <div>
           <select
             style={{marginBottom:"2rem"}}
-            value={trainers}
-            onChange={(e) => setTrainers(e.target.value)}
+            value={reservationTrainerId}
+            onChange={(e) => setReservationTrainerId(e.target.value)}
           >
             <option value="">트레이너 선택</option>
-            {trainers.map(trainer => (
+            {trainerlist.map(trainer => (
               <option key={trainer.id} value={trainer.id}>{trainer.name}</option>
             ))}
           </select>
@@ -150,8 +162,8 @@ function PT() {
             key={index}
             className={`reservation-item ${reservation.date < getCurrentDate() ? 'past' : 'current'}`}
           >
-            <p>일시: {reservation.reservationTime[0]}년 {reservation.reservationTime[1]}월 {reservation.reservationTime[2]}일 {reservation.reservationTime[3]}시</p>
-            <p>담당 트레이너: {reservation.trainerName} 비응신</p>
+            <p>일시: {reservation.reservationTime[0]}년 {reservation.reservationTime[1]}월 {reservation.reservationTime[2]}일 {reservation.reservationTime[3]+9}시</p>
+            <p>담당 트레이너: {reservation.trainerName}</p>
           </div>
         ))}
       </div>
