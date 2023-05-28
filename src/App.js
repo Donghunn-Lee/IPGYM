@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import MainPage from "./components/MainPage";
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
@@ -18,28 +18,21 @@ const App = () => {
   const [isAdmin, setIsAdmin] = useState(true);
 
   const redirectPath = isAuthenticated ? "/mainpage" : "/login";
-  const adminPath = isAdmin ? "/admin" : "/adminlogin";
+  // const adminPath = isAdmin ? "/admin" : "/adminlogin";
 
 
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <h1>- IPGYM -</h1>
+       <h1>- IPGYM -</h1>
+          
         </header>
 
         <div className="App.body">
           <Routes>
             <Route path="/signup" element={<Signup />} />
-            <Route
-              path="/login"
-              element={
-                <Login
-                  setIsAuthenticated={setIsAuthenticated}
-                  IsAuthenticated={isAuthenticated}
-                />
-              }
-            />
+            <Route path="/login" element = {<Login setIsAuthenticated={setIsAuthenticated} IsAuthenticated={isAuthenticated}/>}/>
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/pt" element={<PT />} />
             <Route path="/membership" element={<MembershipManagement />} />

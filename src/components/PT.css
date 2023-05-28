@@ -7,6 +7,10 @@
   padding: 20px;
 }
 
+.pt-component button {
+  margin : 2rem;
+}
+
 .pt-box {
   margin-bottom: 20px;
   padding: 20px;

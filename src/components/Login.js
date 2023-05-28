@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
@@ -6,7 +6,7 @@ import "./Login.css";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,8 +20,9 @@ const Login = (props) => {
       console.log(response);
       localStorage.setItem('token',response.data.accessToken);
       localStorage.setItem('user',email);
+      console.log(localStorage.getItem('user'))
       
-      setIsAuthenticated(true);
+      // setIsAuthenticated(true);
       props.setIsAuthenticated(true);
       console.log('Login success');
     } catch (error) {
