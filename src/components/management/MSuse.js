@@ -46,7 +46,7 @@ const MSuse = () => {
               <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="ptMembers" stroke="#ff7300" activeDot={{ r: 8 }} />
+              <Line type="linear" dataKey="ptMembers" stroke="#ff7300" activeDot={{ r: 8 }} />
             </LineChart>
           </div>
         ) : (
@@ -58,7 +58,7 @@ const MSuse = () => {
               <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="Members" stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line type="linear" dataKey="Members" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
           </div>
         )}
