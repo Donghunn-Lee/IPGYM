@@ -1,6 +1,4 @@
 /* mainPage.css */
-.App {
-  margin: 0;
 
   .main-page {
     text-align: center;
@@ -9,7 +7,10 @@
   .main-title {
     font-size: 24px;
     margin-bottom: 20px;
+    font-family: KBO-Dia-Gothic_bold;
+    
   }
+  
   
   .button-container {
     display: flex;
@@ -18,13 +19,15 @@
     justify-content: center;
   }
   
-  .button {
-    width: 200px;
-    height: 50px;
+  .button-container button {
+    width: 250px;
+    height: 75px;
     background-color: #2196f3;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-family: KBO-Dia-Gothic_bold;
+    font-size: 30px;
+    font-weight: bold;
     margin-bottom: 10px;
     color: #fff;
     cursor: pointer;
@@ -45,5 +48,9 @@
     }
   }
   
-  
+  @font-face {
+    font-family: 'KBO-Dia-Gothic_bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
 }
