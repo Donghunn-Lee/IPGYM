@@ -1,10 +1,11 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import MainPage from "./components/MainPage";
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import MyPage from "./components/MyPage";
 import PT from "./components/PT";
 import MembershipManagement from "./components/MembershipManagement";
+import BMI from "./components/BMI";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import AdminLogin from "./components/AdminLogin";
@@ -20,19 +21,26 @@ const App = () => {
   const redirectPath = isAuthenticated ? "/mainpage" : "/login";
   // const adminPath = isAdmin ? "/admin" : "/adminlogin";
 
-
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-       <h1>- IPGYM -</h1>
-          
+          <h1>- IPGYM -</h1>
         </header>
 
         <div className="App.body">
           <Routes>
             <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element = {<Login setIsAuthenticated={setIsAuthenticated} IsAuthenticated={isAuthenticated}/>}/>
+            <Route
+              path="/login"
+              element={
+                <Login
+                  setIsAuthenticated={setIsAuthenticated}
+                  IsAuthenticated={isAuthenticated}
+                />
+              }
+            />
+            <Route path="/BMI" element={<BMI />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/pt" element={<PT />} />
             <Route path="/membership" element={<MembershipManagement />} />
