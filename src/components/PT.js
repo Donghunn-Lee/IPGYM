@@ -104,7 +104,6 @@ function PT() {
       .then(response => {
         setTrainerList(response.data);
         console.log(response.data);
-        console.log(trainerlist);
       })
       .catch(error => console.log(error));
   }, []);

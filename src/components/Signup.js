@@ -4,22 +4,23 @@ import "./Signup.css";
 
 const Signup = (props) => {
   const [name, setName] = useState("");
-  // const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState('에러가 낫서요 ㅠㅠ');
+  
 
-
-  // const handleGenderChange = (e) => {
-  //   setGender(e.target.value);
-  // };
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email,password,name);
+    console.log(email,password,name,gender);
     axios.post('http://43.200.171.222:8080/auth/signup', {
       email: email,
       password: password,
+      gender: gender,
       name: name
     })
     .then((response) => {
@@ -49,13 +50,13 @@ const Signup = (props) => {
           onChange={(e) => setName(e.target.value)}
         />
       </label>
-      {/* <div className="gender">
+      <div className="gender">
         <label className="=gender">
           성별:
           <input
             type="radio"
-            value="남성"
-            checked={gender === "남성"}
+            value="Male"
+            checked={gender === "Male"}
             onChange={handleGenderChange}
           />
           남성
@@ -63,13 +64,13 @@ const Signup = (props) => {
         <label>
           <input
             type="radio"
-            value="여성"
-            checked={gender === "여성"}
+            value="Female"
+            checked={gender === "Female"}
             onChange={handleGenderChange}
           />
           여성
         </label>
-      </div> */}
+      </div>
       <label className="form-label">
         이메일:
         <input
