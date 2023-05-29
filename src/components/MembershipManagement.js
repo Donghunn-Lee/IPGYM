@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import './MembershipManagement.css';
-
-
+import React, { useState, useEffect } from "react";
+import "./MembershipManagement.css";
 
 const MembershipManagement = () => {
-  const [expirationDate, setExpirationDate] = useState('');
+  const [expirationDate, setExpirationDate] = useState("");
   const [daysRemaining, setDaysRemaining] = useState(0);
   const [usageHistory, setUsageHistory] = useState([]);
   const [selectedUsage, setSelectedUsage] = useState(null);
@@ -15,14 +13,14 @@ const MembershipManagement = () => {
 
   // 예제로 사용할 데이터
   const membershipData = {
-    expirationDate: '2023-12-31',
+    expirationDate: "2023-12-31",
     usageHistory: [
-      { date: '2023-01-15', time: '10:30' },
-      { date: '2023-02-05', time: '15:45' },
-      { date: '2023-03-20', time: '18:20' },
-      { date: '2023-04-01', time: '13:00' },
-      { date: '2023-04-13', time: '13:20' },
-    ]
+      { date: "2023-01-15", time: "10:30" },
+      { date: "2023-02-05", time: "15:45" },
+      { date: "2023-03-20", time: "18:20" },
+      { date: "2023-04-01", time: "13:00" },
+      { date: "2023-04-13", time: "13:20" },
+    ],
   };
 
   useEffect(() => {
@@ -55,28 +53,8 @@ const MembershipManagement = () => {
           <p className="info-value">{daysRemaining} 일</p>
         </div>
       </div>
-
-          
-        
-      <div className="membership-container">
-        <h3 className="usage-heading">이용 기록</h3>
-        <p className="usage-allday">사용 일 수 : {usageHistory.length}일</p>
-        <ul className="usage-history">
-          {usageHistory.map((usage, index) => (
-            <li
-              key={index}
-              onClick={() => handleUsageClick(index)}
-              className={index === selectedUsage ? 'selected' : ''}
-            >
-              {usage.date} ({new Date(usage.date).toLocaleDateString('ko-KR', { weekday: 'long' })})
-              {index === selectedUsage && <span> - {usage.time}</span>}
-            </li>
-          ))}
-        </ul>
-      </div>
     </>
   );
-  
-}
+};
 
 export default MembershipManagement;
