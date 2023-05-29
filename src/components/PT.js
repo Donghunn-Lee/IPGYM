@@ -27,7 +27,7 @@ function PT() {
 
   useEffect(() => {
     console.log(reservationTrainerId);
-  }, [reservationTrainerId]);
+  }, [reservationTrainerId], []);
 
   useEffect(() => {
     handleReservationHistory();

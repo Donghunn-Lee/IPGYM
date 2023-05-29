@@ -18,7 +18,6 @@ const MainPage = () => {
     <div className="main-page">
       <h1 className="main-title">Main Page</h1>
       <div className="button-container">
-       
         {/* <NavLink exact to="/login" activeClassName="active">
           <Button text="로그인" onClick={() => handleButtonClick("로그인")} />
         </NavLink> */}
@@ -42,6 +41,9 @@ const MainPage = () => {
             text="헬스장 이용권"
             onClick={() => handleButtonClick("헬스장 이용권")}
           />
+        </NavLink>
+        <NavLink exact to="/bmi" activeClassName="active">
+          <Button text="BMI 계산기" onClick={() => handleButtonClick("BMI")} />
         </NavLink>
       </div>
     </div>
