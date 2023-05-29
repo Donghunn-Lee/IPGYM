@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import MainPage from "./components/MainPage";
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import MyPage from "./components/MyPage";
 import PT from "./components/PT";
 import MembershipManagement from "./components/MembershipManagement";
-import BMI from "./components/BMI";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import AdminLogin from "./components/AdminLogin";
@@ -13,6 +12,7 @@ import Admin from "./components/Admin";
 import MemberManage from "./components/management/MemberManage";
 import PTManage from "./components/management/PTManage";
 import Ticket from "./components/management/Ticket";
+import BMI from "./components/BMI";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,13 +21,14 @@ const App = () => {
   const redirectPath = isAuthenticated ? "/mainpage" : "/login";
   // const adminPath = isAdmin ? "/admin" : "/adminlogin";
 
+
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <h1>- IPGYM -</h1>
+       <h1>- IPGYM -</h1>
+          
         </header>
-        
         <body>
           <div className="App.body">
             <Routes>
@@ -36,8 +37,9 @@ const App = () => {
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/pt" element={<PT />} />
               <Route path="/membership" element={<MembershipManagement />} />
-              <Route path="/mainpage" element={isAuthenticated ? <MainPage /> : <Navigate to="/login" />}/>
-              <Route path="/adminlogin" element={<AdminLogin setIsAdmin={setIsAdmin} IsAdmin={isAdmin}/>}/>
+              <Route path="/bmi" element={<BMI/>} />
+              <Route path="/mainpage" element={ isAuthenticated ? <MainPage /> : <Navigate to="/login" />}/>
+              <Route path="/adminlogin" element={<AdminLogin setIsAdmin={setIsAdmin} IsAdmin={isAdmin} />}/>
               <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/adminlogin" />}/>
               <Route path="/membermanage" element={<MemberManage />} />
               <Route path="/ptmanage" element={<PTManage />} />
