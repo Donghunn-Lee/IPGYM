@@ -99,7 +99,7 @@ const MyPage = () => {
           headers: {
             Authorization: "Bearer " + token,
           },
-        }
+    }
       )
       .then((response) => {
         handleReservationHistory();
@@ -200,7 +200,7 @@ const MyPage = () => {
             </p>
             <p>담당 트레이너: {reservation.trainerName} 비응신</p>
           </div>
-        ))}
+            ))}
       </div>
     </div>
   );
