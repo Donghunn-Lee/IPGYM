@@ -198,7 +198,7 @@ const MyPage = () => {
               {reservation.reservationTime[2]}일{" "}
               {reservation.reservationTime[3]}시
             </p>
-            <p>담당 트레이너: {reservation.trainerName} 비응신</p>
+            <p>담당 트레이너: {reservation.trainerName}</p>
           </div>
             ))}
       </div>
