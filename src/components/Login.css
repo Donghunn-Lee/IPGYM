@@ -1,42 +1,55 @@
 /* Login.css */
 
 .login-form {
-  display: grid;
+  background-color: rgb(33, 34, 68);
+  display: flex;
+  flex-direction: column;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
   align-items: center;
+  justify-content: center;
   width: 300px;
   margin: 0 auto;
   padding: 20px;
-  border-radius: 5px;
+  border:4px solid white;
+  
+  border-radius: 20px;
   position: relative;
+  color :white;
 }
 
 .login-form h2 {
   margin-bottom: 20px;
+  font-size: 50px;
 }
 
 .login-form label {
   display: block;
   margin-bottom: 10px;
+  font-size: 26px;
 }
 
 .login-form input {
-  width: 100%;
-  padding: 5px;
+  margin-top: 1rem;
+  font-size: 15px;
+  width: 85%;
+  padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-.login-form button, .login-form a{
-  font-size: 15px;
-  padding: 10px 20px;
+.login-form button,
+.login-form a{
+  font-family:KBO-Dia-Gothic_bold ;
+  font-size: 20px;
+  padding: 10px 0;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   text-decoration: none;
+  width:80%;
 }
 
 .login-form button:hover {
@@ -45,6 +58,7 @@
 
 #manager-login {
   text-decoration: none;
+  color: white;
   position: absolute; /* 추가된 속성 */
   top: 95%; /* 원하는 위치로 조정 */
   right: 5%; /* 원하는 위치로 조정 */

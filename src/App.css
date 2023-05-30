@@ -1,9 +1,23 @@
-.App {
-  text-align: center;
-  margin-top: 0;
+body {
+  background-color: rgb(16, 20, 37);
+  font-family: KBO-Dia-Gothic_bold;
 }
 
-.App-header {
+.title{
+  font-size: 100px;
+  margin:20px;
+  color: white;
+  -webkit-text-stroke: 4px rgb(44, 45, 80);
+}
+
+.App {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+/* .App-header {
   background-color: #282c34;
   height: 5rem;
   display: flex;
@@ -13,7 +27,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 @font-face {
   font-family: 'KBO-Dia-Gothic_bold';

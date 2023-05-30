@@ -10,7 +10,7 @@ const MainPage = () => {
 
   return (
     <div className="main-page">
-      <h1 className="main-title">Main Page</h1>
+      
       <div className="button-container">
         <NavLink exact to="/mypage" activeClassName="active">
           <Button

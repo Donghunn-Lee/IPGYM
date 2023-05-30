@@ -14,7 +14,7 @@ const Login = (props) => {
     try {
       const response = await axios.post("http://43.200.171.222:8080/auth/login", {
         email: email,
-        password: password,
+        password: password
       }, );
 
       console.log(response);
@@ -41,7 +41,7 @@ const Login = (props) => {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>로그인</h2>
         <label>
-          이메일:
+          이메일
           <input
             type="email"
             value={email}
@@ -49,10 +49,11 @@ const Login = (props) => {
           />
         </label>
         <label>
-          비밀번호:
+          비밀번호
           <input
             type="password"
             value={password}
+            style={{marginBottom:"1rem"}}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>

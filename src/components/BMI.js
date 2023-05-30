@@ -31,18 +31,20 @@ const BMI = () => {
 
   const getBMIResult = () => {
     if (bmi < 18.5) return "저체중";
-    if (bmi >= 18.5 && bmi < 25) return "정상 체중";
-    if (bmi >= 25 && bmi < 30) return "과체중";
-    return "비만";
+    if (bmi >= 18.5 && bmi < 23) return "정상 체중";
+    if (bmi >= 23 && bmi < 25) return "과체중";
+    if (bmi >= 25 && bmi < 30) return "비만";
+    return "고도비만";
   };
 
   const bmiResult = getBMIResult();
 
   const bmiTable = [
     { category: "저체중", range: "< 18.5" },
-    { category: "정상 체중", range: "18.5 - 24.9" },
-    { category: "과체중", range: "25 - 29.9" },
-    { category: "비만", range: "≥ 30" },
+    { category: "정상 체중", range: "18.5 - 23" },
+    { category: "과체중", range: "23 - 25" },
+    { category: "비만", range: "25 - 30" },
+    { category: "고도 비만", range: "≥ 30" },
   ];
 
   return (

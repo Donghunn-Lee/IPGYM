@@ -61,6 +61,9 @@ function PT() {
       .then(response => {
         handleReservationHistory();
         console.log(response);
+        setReservationDate(""); // 예약 날짜 초기화
+        setReservation(""); // 예약 시간 초기화
+        setReservationTrainerId(""); // 선택한 트레이너 초기화
       })
       .catch(error => {
         console.error(error);
@@ -147,9 +150,9 @@ function PT() {
           ))}
         </div>
         
+        <button onClick={handlePTreservationSubmit}>예약하기</button>
         
-        
-          <button onClick={handlePTreservationSubmit}>예약하기</button>
+          
        
       </div>
 

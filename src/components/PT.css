@@ -45,6 +45,8 @@
 }
 
 .pt-box button {
+  font-family: KBO-Dia-Gothic_bold;
+  font-size: 24px;
   padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
@@ -53,25 +55,6 @@
   cursor: pointer;
 }
 
-.reservation-history {
-  max-height: 100rem;
-  overflow-y: auto;
-}
-
-.reservation-item {
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.reservation-item.current {
-  background-color: #f0f8ff;
-}
-
-.reservation-item.past {
-  color: #888;
-}
 
 .time-slots {
   display: grid;
