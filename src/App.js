@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainPage from "./components/MainPage";
 import "./App.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import MyPage from "./components/MyPage";
 import PT from "./components/PT";
 import MembershipManagement from "./components/MembershipManagement";
@@ -13,10 +13,25 @@ import MemberManage from "./components/management/MemberManage";
 import PTManage from "./components/management/PTManage";
 import BMI from "./components/BMI";
 import Msuse from "./components/management/MSuse";
+import Quotes from "./components/Quotes";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(true);
+//명언 추가 관련
+  const [quoteKey, setQuoteKey] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setQuoteKey(window.location.pathname);
+    };
+  
+    window.addEventListener("popstate", handleRouteChange);
+  
+    return () => {
+      window.removeEventListener("popstate", handleRouteChange);
+    };
+  }, [quoteKey]);
 
   const redirectPath = isAuthenticated ? "/mainpage" : "/login";
   // const adminPath = isAdmin ? "/admin" : "/adminlogin";
@@ -29,6 +44,7 @@ const App = () => {
         </header>
 
         <div className="App.body">
+        <Quotes updateQuote={setRandomQuote} />
           <Routes>
             <Route path="/signup" element={<Signup />} />
             <Route
