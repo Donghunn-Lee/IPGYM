@@ -1,9 +1,8 @@
 /* PT.css */
 
 .pt-component {
-  display: flex;
+  display:flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   max-width: 100%;
   max-height: 100%;
@@ -20,8 +19,8 @@
   padding: 20px;
   background-color: #f0f0f0;
   border-radius: 8px;
-  max-width: 600px;
-  /* max-height: */
+  width: 50%;
+  max-width: 800px;
 }
 
 .pt-box h2 {
@@ -46,6 +45,8 @@
 }
 
 .pt-box button {
+  font-family: KBO-Dia-Gothic_bold;
+  font-size: 24px;
   padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
@@ -54,25 +55,6 @@
   cursor: pointer;
 }
 
-.reservation-history {
-  max-height: 100rem;
-  overflow-y: auto;
-}
-
-.reservation-item {
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.reservation-item.current {
-  background-color: #f0f8ff;
-}
-
-.reservation-item.past {
-  color: #888;
-}
 
 .time-slots {
   display: grid;

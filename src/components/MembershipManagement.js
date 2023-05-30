@@ -54,7 +54,7 @@ const MembershipManagement = () => {
         </div>
       </div>
 
-      <div className="membership-container">
+      {/* <div className="membership-container">
         <h3 className="usage-heading">이용 기록</h3>
         <p className="usage-allday">사용 일 수 : {usageHistory.length}일</p>
         <ul className="usage-history">
@@ -72,7 +72,7 @@ const MembershipManagement = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };
