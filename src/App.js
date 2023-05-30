@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MainPage from "./components/MainPage";
 import "./App.css";
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import MyPage from "./components/MyPage";
 import PT from "./components/PT";
 import MembershipManagement from "./components/MembershipManagement";
@@ -44,7 +44,7 @@ const App = () => {
         </header>
 
         <div className="App.body">
-        <Quotes updateQuote={setRandomQuote} />
+          <Quotes key= {quoteKey} />
           <Routes>
             <Route path="/signup" element={<Signup />} />
             <Route

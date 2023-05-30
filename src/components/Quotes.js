@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 
-const Quotes = ({updateQuote}) => {
+const Quotes = () => {
   const [randomQuote, setRandomQuote] = useState('');
 
-  const healthQuotes = [
+const healthQuotes = [
     "간단합니다. 흔들리면 그것은 지방입니다.",
     "모든 국가는 그에 걸맞은 정부(몸)를 가진다.",
     "니 팔은 팔이 아니오, 단지 등과 바를 이어주는 끈일 뿐이다.",
@@ -45,8 +45,7 @@ const Quotes = ({updateQuote}) => {
     const randomIndex = Math.floor(Math.random() * healthQuotes.length);
     const selectedQuote = healthQuotes[randomIndex];
     setRandomQuote(selectedQuote);
-    updateQuote(selectedQuote);
-  }, [healthQuotes, updateQuote]);
+  }, [healthQuotes]);
 
   return (
     <div>
