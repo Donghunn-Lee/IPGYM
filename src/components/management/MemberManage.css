@@ -1,0 +1,18 @@
+.member-container {
+  text-align: center;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.member-table {
+  color: white;
+}
+
+.no-matching-info {
+  color: white;
+}
