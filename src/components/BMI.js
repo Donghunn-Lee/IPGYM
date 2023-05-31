@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-import "./BMI.css"; //
+import "./BMI.css";
+import {useNavigate} from "react-router-dom";
+
 
 const BMI = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
   const [bmi, setBMI] = useState(0);
+
+  const Navigate = useNavigate();
+
+  const handleGoBack = () => {
+    Navigate('/MainPage');
+  };
 
   const handleHeightChange = (e) => {
     setHeight(e.target.value);
@@ -47,6 +55,14 @@ const BMI = () => {
   ];
 
   return (
+<>
+<button className="goBackButton" onClick={handleGoBack}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+  뒤로가기
+</button>
     <div className="container">
       <div className="header">
         <div>BMI 계산기</div>
@@ -100,7 +116,7 @@ const BMI = () => {
         </table>
       </div>
     </div>
-  );
+  </>);
 };
 
 export default BMI;

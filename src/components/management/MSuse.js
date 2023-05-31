@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import './MSuse.css'; // CSS 파일을 import
+import {useNavigate} from "react-router-dom";
 
 const MSuse = () => {
   const [showChart, setShowChart] = useState(1);
   const [yearIndex, setYearIndex] = useState(1);
 
   const years = ['2022 년', '2023 년', '2024 년'];
+
+  const Navigate = useNavigate();
+
+  const handleGoBack = () => {
+    Navigate('/Admin');
+  };
 
   // 회원별 월별 이용 통계 데이터 예시
   const usageData = [[//2022년
@@ -111,6 +118,14 @@ const MSuse = () => {
   const currentYearData = usageData[yearIndex];
 
   return (
+<>
+<button className="goBackButton" onClick={handleGoBack}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+    뒤로가기
+  </button>
     <div className="usage-statistics">
       <div className="hbackground">
         <h2>통계</h2>
@@ -153,7 +168,7 @@ const MSuse = () => {
         )}
       </div>
     </div>
-  );
+  </>);
   
 };
 

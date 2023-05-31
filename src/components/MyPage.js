@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MyPage.css";
+import {useNavigate} from "react-router-dom";
 
 const MyPage = () => {
   const [exerciseGoal, setExerciseGoal] = useState("");
@@ -12,7 +13,11 @@ const MyPage = () => {
   const [reservationHistoryCheck, setReservationHistoryCheck] = useState([]);
   const token = localStorage.getItem("token");
   const [userName, setUserName] = useState("");
+  const Navigate = useNavigate();
 
+  const handleGoBack = () => {
+    Navigate('/MainPage');
+  };
   useEffect(() => {
     loadName();
   }, []);
@@ -136,10 +141,19 @@ const MyPage = () => {
   
   
   return (
+    <>
+    <button className="goBackButton" onClick={handleGoBack}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+  뒤로가기
+</button>
     <div className="container">
       <div className="header">
         <div>{userName}회원님😊</div>
       </div>
+      
 
       <div className="exercise-goal">
         
@@ -195,6 +209,7 @@ const MyPage = () => {
           ))}
       </div>
     </div>
+    </>
   );
 };
 

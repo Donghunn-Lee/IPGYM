@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PT.css';
+import {useNavigate} from "react-router-dom";
 
 function PT() {
   const [PTsubscription, setPTsubscription] = useState('');
@@ -12,6 +13,11 @@ function PT() {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   // const [showConfirmCheck, setShowConfirmCheck] = useState(false);
   
+  const Navigate = useNavigate();
+
+  const handleGoBack = () => {
+    Navigate('/MainPage');
+  };
 
   const token = localStorage.getItem('token');
 
@@ -139,6 +145,14 @@ function PT() {
 
 
   return (
+    <>
+    <button className="goBackButton" onClick={handleGoBack}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+  뒤로가기
+</button>
     <div className="pt-component">
       <div className="pt-box">
         <h2>남은 PT 이용권</h2>
@@ -208,6 +222,7 @@ function PT() {
       )}
       </div>
     </div>
+    </>
   );
 }
 
