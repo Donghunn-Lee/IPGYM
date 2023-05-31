@@ -26,7 +26,7 @@ const Admin = () => {
         </NavLink>
         <NavLink exact to="/MSuse" activeClassName="active">
           <Button
-            text="헬스장 이용권 관리"
+            text="헬스장 통계"
             onClick={() => handleButtonClick("헬스장 이용권")}
           />
         </NavLink>

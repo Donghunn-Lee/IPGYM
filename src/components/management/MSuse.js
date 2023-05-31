@@ -3,8 +3,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import './MSuse.css'; // CSS 파일을 import
 
 const MSuse = () => {
-  const [showChart, setShowChart] = useState(false);
-  const [yearIndex, setYearIndex] = useState(false);
+  const [showChart, setShowChart] = useState(1);
+  const [yearIndex, setYearIndex] = useState(1);
 
   const years = ['2022 년', '2023 년', '2024 년'];
 

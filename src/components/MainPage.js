@@ -20,7 +20,7 @@ const MainPage = () => {
         </NavLink>
         
         <NavLink exact to="/pt" activeClassName="active">
-          <Button text="PT 예약/조회" onClick={() => handleButtonClick("PT")} />
+          <Button text="PT 예약" onClick={() => handleButtonClick("PT")} />
         </NavLink>
 
         <NavLink exact to="/membership" activeClassName="active">

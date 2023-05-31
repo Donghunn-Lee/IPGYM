@@ -5,6 +5,10 @@ import "./PTManage.css";
 function PTManage() {
   const [reservations, setReservations] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedReservation, setSelectedReservation] = useState(null);
+  const [filteredReservations, setFilteredReservations] = useState([]);
 
   const token = localStorage.getItem('token');
 
@@ -28,21 +32,70 @@ function PTManage() {
     })
       .then(response => {
         setReservations(response.data);
-        console.log(reservations);
+        setFilteredReservations(response.data);
+        
       })
       .catch(error => console.log(error));
   };
 
   const handleSearch = () => {
-    const searchTarget = reservations.find((target) => target.email === searchValue);
-    setReservations(searchTarget);
+    const filtered = reservations.filter((reservation) => {
+      const memberId = String(reservation.memberId).toLowerCase();
+      return (
+        reservation.memberName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        memberId.includes(searchValue.toLowerCase())
+      );
+    });
+    setFilteredReservations(filtered);
+  };
+
+  const resetSearch = () => {
+    setSearchValue('');
+    setFilteredReservations(reservations);
+  };
+
+  useEffect(() => {
+    if (searchValue === '') {
+      resetSearch();
+    } else {
+      handleSearch();
+    }
+  }, [searchValue]);
+
+  const handleDelete = () => {
+    // axios.delete(`http://43.200.171.222:8080/api/admin/reservations/${event.id}`, {
+    //   headers: {
+    //     'Authorization': 'Bearer ' + token
+    //   }
+    // })
+    // .then(response => {
+    //   // 삭제한 이벤트를 제외한 이벤트 목록으로 상태 업데이트 
+    //   const newEvents = events.filter(e => e.id !== event.id);
+    //   setEvents(newEvents);
+    //   // saveEventsToLocalStorage(newEvents); // 로컬 스토리지에 저장
+    //   setSelectedEvent(null);
+    //   setShowEventDetailModal(false);
+    // })
+    // .catch(error => {
+    //   console.error(error);
+    // });
+    // setShowDeleteModal(false);
+    // // axios.delete(...) 등의 로직을 추가하세요.
+  };
+
+  const handleEdit = () => {
+    // // 예약 수정 모달을 띄우고, 수정할 예약 정보를 입력하도록 처리하세요.
+    // // 이후 해당 예약 정보를 삭제하고, 수정된 예약 정보를 추가하는 로직을 구현하세요.
+    // // axios.delete(...) 및 axios.post(...) 등의 로직을 추가하세요.
+    // setShowEditModal(false);
+    // setSelectedReservation(null);
   };
 
   return (
     <div className='pt-manage'>
       <h2>PT 예약 관리</h2>
 
-      <div className>
+      <div className="search">
         <input
           type="text"
           value={searchValue}
@@ -50,6 +103,7 @@ function PTManage() {
           placeholder="이름 또는 이메일로 검색"
         />
         <button onClick={handleSearch}>검색</button>
+        <button onClick={resetSearch}>새로고침</button>
       </div>
 
       <table>
@@ -59,25 +113,71 @@ function PTManage() {
             <th>이메일</th>
             <th>예약 일시</th>
             <th>트레이너</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {reservations.map((reservation, index) => (
-            <tr
-              key={index}
-              className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
-            >
-              <th>{reservation.memberName}</th>
-              <th>{reservation.memberId}</th>
-              <th>{reservation.reservationTime[0]}년{" "}
-              {reservation.reservationTime[1]}월{" "}
-              {reservation.reservationTime[2]}일{" "}
-              {reservation.reservationTime[3]+9}{' ~ '}{reservation.reservationTime[3]+10}시</th>
-              <th>{reservation.trainerName}</th>
+          {filteredReservations.length === 0 ? (
+            <tr>
+              <td colSpan="5">회원이 없습니다.</td>
             </tr>
-              ))}
+          ) : (
+            filteredReservations.map((reservation, index) => {
+              const reservationTime = reservation.reservationTime || [0, 0, 0, 0, 0];
+              return (
+                <tr
+                  key={index}
+                  className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
+                >
+                  <th>{reservation.memberName}</th>
+                  <th>{reservation.memberId}</th>
+                  <th>
+                    {reservationTime[0]}년 {reservationTime[1]}월 {reservationTime[2]}일 {reservationTime[3] + 9} ~ {reservationTime[3] + 10}시
+                  </th>
+                  <th>{reservation.trainerName}</th>
+                  <th>
+                    <button onClick={() => setShowEditModal(true)}>수정</button>
+                    <button onClick={() => setShowDeleteModal(true)}>삭제</button>
+                  </th>
+                </tr>
+              );
+            })
+          )}
         </tbody>
       </table>
+
+      {/* 삭제 확인 모달 */}
+      {showDeleteModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>예약 삭제</h3>
+            <p>정말 삭제하시겠습니까?</p>
+            <div className="modal-buttons">
+              <button onClick={handleDelete}>확인</button>
+              <button onClick={() => setShowDeleteModal(false)}>취소</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 수정 모달 */}
+      {showEditModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>예약 수정</h3>
+            <form onSubmit={handleEdit}>
+              {/* 예약 정보 입력 폼을 구현하세요 */}
+              {/* 예약 정보 입력 폼의 값은 useState를 사용하여 관리하세요 */}
+              {/* 예약 정보를 제출하면 handleEdit 함수가 호출되도록 처리하세요 */}
+              {/* 수정된 예약 정보를 서버로 전송하여 업데이트하세요 */}
+              <div className="modal-buttons">
+                <button type="submit">저장</button>
+                <button onClick={() => setShowEditModal(false)}>취소</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
