@@ -1,43 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./MemberManage.css";
 
 const MemberManage = () => {
   const [searchName, setSearchName] = useState("");
-  const [memberInfo, setMemberInfo] = useState([
-    { name: "John Doe", gender: "Male", email: "johndoe@example.com" },
-    { name: "최승근", gender: "male", email: "janesmith@example.com" },
-    { name: "이동훈", gender: "male", email: "janesmith@example.com" },
-    { name: "김혁", gender: "male", email: "janesmith@example.com" },
-    { name: "전성권", gender: "male", email: "janesmith@example.com" },
-    { name: "정경완", gender: "male", email: "janesmith@example.com" },
-    { name: "박상혁", gender: "male", email: "janesmith@example.com" },
-    { name: "함석명", gender: "male", email: "함석명@example.com" },
-    { name: "함석명", gender: "Female", email: "함석명@example.com" },
+  const [memberInfo, setMemberInfo] = useState([]);
+  const token = localStorage.getItem('token');
 
-    // ... 다른 회원 정보들
-  ]);
+  useEffect(()=>{
+    loadAllMembers()
+  },[])
+
+  const loadAllMembers = () => {
+    axios.get("http://43.200.171.222:8080/api/admin/GymMemberships", {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      }
+    })
+      .then(response => {
+        console.log(response);
+        // setMemberInfo(response.data)
+      })
+      .catch(error => console.log(error));
+  };
 
   const handleSearch = () => {
-    // 검색 기능을 구현합니다.
-    const filteredMembers = memberInfo.filter((member) =>
-      member.name.includes(searchName)
-    );
-    setMemberInfo(filteredMembers);
+    // // 검색 기능을 구현합니다.
+    // const filteredMembers = memberInfo.filter((member) =>
+    //   member.name.includes(searchName)
+    // );
+    // setMemberInfo(filteredMembers);
   };
   const handleReset = () => {
-    // 검색 결과를 초기화합니다.
-    setSearchName("");
-    setMemberInfo([
-      { name: "John Doe", gender: "Male", email: "johndoe@example.com" },
-      { name: "최승근", gender: "male", email: "janesmith@example.com" },
-      { name: "이동훈", gender: "male", email: "janesmith@example.com" },
-      { name: "김혁", gender: "male", email: "janesmith@example.com" },
-      { name: "전성권", gender: "male", email: "janesmith@example.com" },
-      { name: "정경완", gender: "male", email: "janesmith@example.com" },
-      { name: "박상혁", gender: "male", email: "janesmith@example.com" },
-      { name: "함석명", gender: "male", email: "함석명@example.com" },
-      { name: "함석명", gender: "Female", email: "함석명@example.com" },
-    ]);
+    // // 검색 결과를 초기화합니다.
+    // setSearchName("");
+    // setMemberInfo();
   };
 
   return (

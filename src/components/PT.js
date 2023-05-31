@@ -155,12 +155,6 @@ function PT() {
           
        
       </div>
-
-      <div className="pt-box reservation-history">
-        <h2>PT 예약 내역</h2>
-          {reservationHistory.data}
-        
-      </div>
     </div>
   );
 }
