@@ -159,15 +159,7 @@ function PT() {
       <div className="pt-box reservation-history">
         <h2>PT 예약 내역</h2>
           {reservationHistory.data}
-        {reservationHistory.map((reservation, index) => (
-          <div
-            key={index}
-            className={`reservation-item ${reservation.date < getCurrentDate() ? 'past' : 'current'}`}
-          >
-            <p>일시: {reservation.reservationTime[0]}년 {reservation.reservationTime[1]}월 {reservation.reservationTime[2]}일 {reservation.reservationTime[3]+9}시</p>
-            <p>담당 트레이너: {reservation.trainerName}</p>
-          </div>
-        ))}
+        
       </div>
     </div>
   );
