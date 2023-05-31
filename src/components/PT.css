@@ -1,7 +1,5 @@
-/* PT.css */
-
 .pt-component {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 100%;
@@ -11,7 +9,7 @@
 }
 
 .pt-component button {
-  margin : 2rem;
+  margin: 2rem;
 }
 
 .pt-box {
@@ -56,7 +54,6 @@
   cursor: pointer;
 }
 
-
 .time-slots {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -75,4 +72,64 @@
 
 .time-slot:hover {
   background-color: #0056b3;
+}
+
+.time-slot.selected {
+  background-color: #00b300;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal p {
+  margin-bottom: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-buttons button {
+  font-family: KBO-Dia-Gothic_bold;
+  font-size: 16px;
+  padding: 4px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.modal-buttons button:last-child {
+  margin-left: 0;
+}
+
+.modal input[type="text"] {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
 }

@@ -25,16 +25,10 @@ const MemberManage = () => {
   };
 
   const handleSearch = () => {
-    // // 검색 기능을 구현합니다.
-    // const filteredMembers = memberInfo.filter((member) =>
-    //   member.name.includes(searchName)
-    // );
-    // setMemberInfo(filteredMembers);
+   
   };
   const handleReset = () => {
-    // // 검색 결과를 초기화합니다.
-    // setSearchName("");
-    // setMemberInfo();
+    
   };
 
   return (
@@ -62,6 +56,9 @@ const MemberManage = () => {
                 <th>이름</th>
                 <th>성별</th>
                 <th>이메일</th>
+                <th>헬스장 이용권</th>
+                <th>PT 이용권</th>
+                <th>버튼</th>
               </tr>
             </thead>
             <tbody>
@@ -71,6 +68,9 @@ const MemberManage = () => {
                     <td>{member.name}</td>
                     <td>{member.gender}</td>
                     <td>{member.email}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 ))
               ) : (

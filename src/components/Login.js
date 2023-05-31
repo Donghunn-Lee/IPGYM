@@ -32,7 +32,7 @@ const Login = (props) => {
         setPath('/mainpage')
         console.log(path);
       }
-
+    
 
       props.setIsAuthenticated(true);
       console.log('Login success');
@@ -71,7 +71,7 @@ const Login = (props) => {
         <button type="submit" onClick={handleSubmit}>로그인</button>
         <Link to="/signup">회원가입</Link>  
       </form>
-      <Link id="manager-login" to="/adminlogin">관리자 로그인</Link>
+      
     </div>
   );
 };

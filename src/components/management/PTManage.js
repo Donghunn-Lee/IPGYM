@@ -32,7 +32,8 @@ function PTManage() {
     })
       .then(response => {
         setReservations(response.data);
-        console.log(reservations);
+        setFilteredReservations(response.data);
+        
       })
       .catch(error => console.log(error));
   };
@@ -61,25 +62,34 @@ function PTManage() {
     }
   }, [searchValue]);
 
-
-
   const handleDelete = () => {
-    // 예약 삭제 로직을 구현하세요.
-    // 삭제 확인 모달을 띄우고, 확인 시 해당 예약 정보를 삭제하도록 처리하세요.
-    // 이후 fetchReservations()를 호출하여 업데이트된 예약 목록을 가져옵니다.
-    setShowDeleteModal(false);
-    // axios.delete(...) 등의 로직을 추가하세요.
+    // axios.delete(`http://43.200.171.222:8080/api/admin/reservations/${event.id}`, {
+    //   headers: {
+    //     'Authorization': 'Bearer ' + token
+    //   }
+    // })
+    // .then(response => {
+    //   // 삭제한 이벤트를 제외한 이벤트 목록으로 상태 업데이트 
+    //   const newEvents = events.filter(e => e.id !== event.id);
+    //   setEvents(newEvents);
+    //   // saveEventsToLocalStorage(newEvents); // 로컬 스토리지에 저장
+    //   setSelectedEvent(null);
+    //   setShowEventDetailModal(false);
+    // })
+    // .catch(error => {
+    //   console.error(error);
+    // });
+    // setShowDeleteModal(false);
+    // // axios.delete(...) 등의 로직을 추가하세요.
   };
 
   const handleEdit = () => {
-    // 예약 수정 모달을 띄우고, 수정할 예약 정보를 입력하도록 처리하세요.
-    // 이후 해당 예약 정보를 삭제하고, 수정된 예약 정보를 추가하는 로직을 구현하세요.
-    // axios.delete(...) 및 axios.post(...) 등의 로직을 추가하세요.
-    setShowEditModal(false);
-    setSelectedReservation(null);
+    // // 예약 수정 모달을 띄우고, 수정할 예약 정보를 입력하도록 처리하세요.
+    // // 이후 해당 예약 정보를 삭제하고, 수정된 예약 정보를 추가하는 로직을 구현하세요.
+    // // axios.delete(...) 및 axios.post(...) 등의 로직을 추가하세요.
+    // setShowEditModal(false);
+    // setSelectedReservation(null);
   };
-
-
 
   return (
     <div className='pt-manage'>
@@ -107,26 +117,32 @@ function PTManage() {
           </tr>
         </thead>
         <tbody>
-          {filteredReservations.map((reservation, index) => {
-            const reservationTime = reservation.reservationTime || [0, 0, 0, 0, 0];
-            return (
-              <tr
-                key={index}
-                className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
-              >
-                <th>{reservation.memberName}</th>
-                <th>{reservation.memberId}</th>
-                <th>
-                  {reservationTime[0]}년 {reservationTime[1]}월 {reservationTime[2]}일 {reservationTime[3] + 9} ~ {reservationTime[3] + 10}시
-                </th>
-                <th>{reservation.trainerName}</th>
-                <th>
-                  <button onClick={() => setShowEditModal(true)}>수정</button>
-                  <button onClick={() => setShowDeleteModal(true)}>삭제</button>
-                </th>
-              </tr>
-            );
-          })}
+          {filteredReservations.length === 0 ? (
+            <tr>
+              <td colSpan="5">회원이 없습니다.</td>
+            </tr>
+          ) : (
+            filteredReservations.map((reservation, index) => {
+              const reservationTime = reservation.reservationTime || [0, 0, 0, 0, 0];
+              return (
+                <tr
+                  key={index}
+                  className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
+                >
+                  <th>{reservation.memberName}</th>
+                  <th>{reservation.memberId}</th>
+                  <th>
+                    {reservationTime[0]}년 {reservationTime[1]}월 {reservationTime[2]}일 {reservationTime[3] + 9} ~ {reservationTime[3] + 10}시
+                  </th>
+                  <th>{reservation.trainerName}</th>
+                  <th>
+                    <button onClick={() => setShowEditModal(true)}>수정</button>
+                    <button onClick={() => setShowDeleteModal(true)}>삭제</button>
+                  </th>
+                </tr>
+              );
+            })
+          )}
         </tbody>
       </table>
 
