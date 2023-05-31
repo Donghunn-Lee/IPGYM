@@ -53,7 +53,7 @@ const App = () => {
             <Route path="/pt" element={<PT />} />
             <Route path="/membership" element={<MembershipManagement />} />
             <Route path="/mainpage" element={isAuthenticated ? <MainPage /> : <Navigate to="/login" />}/>
-            <Route path="/adminlogin" element={<AdminLogin setIsAdmin={setIsAdmin} IsAdmin={isAdmin} />}/>
+            {/* <Route path="/adminlogin" element={<AdminLogin setIsAdmin={setIsAdmin} IsAdmin={isAdmin} />}/> */}
             <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/adminlogin" />}/>
             <Route path="/membermanage" element={<MemberManage />} />
             <Route path="/ptmanage" element={<PTManage />} />

@@ -48,9 +48,9 @@ const healthQuotes = [
   }, [healthQuotes]);
 
   return (
-    <div>
+    <div className='quotes'>
       <h1> 헬스 명언 </h1>
-      <p>{randomQuote}</p>
+      <p >{randomQuote}</p>
     </div>
   );
 };

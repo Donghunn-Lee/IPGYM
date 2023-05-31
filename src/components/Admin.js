@@ -9,7 +9,7 @@ const Admin = () => {
 
   return (
     <div className="main-page">
-      <h1 className="main-title">관리자 페이지</h1>
+      
       <div className="button-container">
         {/* <NavLink exact to="/login" activeClassName="active">
              <Button text="로그인" onClick={() => handleButtonClick("로그인")} />

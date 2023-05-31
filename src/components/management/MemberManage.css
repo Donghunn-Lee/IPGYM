@@ -1,18 +1,45 @@
+.container{
+  display:flex;
+  align-items: center;
+}
+
 .member-container {
+  display:flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  margin :0px;
+  padding:0px;
+}
+
+.member-container h2{
+  color:black;
+}
+
+.member-info{
+  background-color: gray;
+  padding : 5px;
+}
+
+.member-container label{
+  color:black;
+  padding: 5px;
 }
 
 .table-container {
+  color:black;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
 }
 
-.member-table {
-  color: white;
+/* .member-table {
+  
 }
 
 .no-matching-info {
-  color: white;
-}
+  
+} */

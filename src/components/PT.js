@@ -31,7 +31,7 @@ function PT() {
 
   useEffect(() => {
     handleReservationHistory();
-    console.log()
+    console.log(reservationHistory);
   }, []);
 
   const handlePTsubscriptionLoad = () => {
@@ -79,7 +79,7 @@ function PT() {
       })
       .then(response => {
         console.log(response.data);
-        setReservationHistory([response.data]);
+        setReservationHistory(response.data);
         console.log(reservationHistory);
       })
       .catch(error => console.log(error));
@@ -158,7 +158,7 @@ function PT() {
 
       <div className="pt-box reservation-history">
         <h2>PT 예약 내역</h2>
-
+          {reservationHistory.data}
         {reservationHistory.map((reservation, index) => (
           <div
             key={index}

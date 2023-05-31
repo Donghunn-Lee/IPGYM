@@ -1,42 +1,83 @@
-import React, { useState, useEffect } from "react";
-import PT from "../PT";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import "./PTManage.css";
 
 function PTManage() {
-  // PT 컴포넌트에서 사용할 상태와 이벤트 핸들러 정의
-  const [name, setName] = useState("");
-  const [gender, setGender] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [reservations, setReservations] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
-  // 회원가입 폼 제출 이벤트 핸들러
-  const handleSignupSubmit = (formData) => {
-    // 여기서 폼 데이터를 처리하는 로직을 추가할 수 있습니다.
-    console.log("Submitted:", formData);
-    // 폼 데이터를 서버로 전송하거나 다른 작업을 수행할 수 있습니다.
+  const token = localStorage.getItem('token');
+
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   };
 
   useEffect(() => {
-    // 마운트 시에 수행할 작업을 추가할 수 있습니다.
-    // 예를 들어 초기 데이터를 가져오거나 초기화 등의 작업을 수행할 수 있습니다.
-    console.log("PTManage component mounted");
-    // fetchInitialData();
-    // performInitialization();
+    fetchReservations();
   }, []);
 
+  const fetchReservations = () => {
+    axios.get("http://43.200.171.222:8080/api/admin/reservations", {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      }
+    })
+      .then(response => {
+        setReservations(response.data);
+        console.log(reservations);
+      })
+      .catch(error => console.log(error));
+  };
+
+  const handleSearch = () => {
+    const searchTarget = reservations.find((target) => target.email === searchValue);
+    setReservations(searchTarget);
+  };
+
   return (
-    <div>
-      <h2>PT 회원 관리</h2>
-      <PT
-        name={name}
-        setName={setName}
-        gender={gender}
-        setGender={setGender}
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}
-        onSignupSubmit={handleSignupSubmit}
-      />
+    <div className='pt-manage'>
+      <h2>PT 예약 관리</h2>
+
+      <div className>
+        <input
+          type="text"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="이름 또는 이메일로 검색"
+        />
+        <button onClick={handleSearch}>검색</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>예약 일시</th>
+            <th>트레이너</th>
+          </tr>
+        </thead>
+        <tbody>
+          {reservations.map((reservation, index) => (
+            <tr
+              key={index}
+              className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
+            >
+              <th>{reservation.memberName}</th>
+              <th>{reservation.memberId}</th>
+              <th>{reservation.reservationTime[0]}년{" "}
+              {reservation.reservationTime[1]}월{" "}
+              {reservation.reservationTime[2]}일{" "}
+              {reservation.reservationTime[3]+9}{' ~ '}{reservation.reservationTime[3]+10}시</th>
+              <th>{reservation.trainerName}</th>
+            </tr>
+              ))}
+        </tbody>
+      </table>
     </div>
   );
 }

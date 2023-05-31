@@ -6,6 +6,7 @@ import "./Login.css";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [path,setPath] = useState("");
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -23,6 +24,16 @@ const Login = (props) => {
       console.log(localStorage.getItem('user'))
       
       // setIsAuthenticated(true);
+      if (email =='admin') {
+        setPath('/admin')
+        console.log(path);
+      }
+      else {
+        setPath('/mainpage')
+        console.log(path);
+      }
+
+
       props.setIsAuthenticated(true);
       console.log('Login success');
     } catch (error) {
@@ -33,7 +44,7 @@ const Login = (props) => {
 
 
   if (props.IsAuthenticated) {
-    return <Navigate to="/mainpage" />;
+    return <Navigate to={path} />;
   }
 
   return (

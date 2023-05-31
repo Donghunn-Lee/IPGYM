@@ -1,6 +1,7 @@
 body {
   background-color: rgb(16, 20, 37);
   font-family: KBO-Dia-Gothic_bold;
+  align-items: center;
 }
 
 .title{
@@ -28,6 +29,10 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
 } */
+
+.quotes{
+  color: white;
+}
 
 @font-face {
   font-family: 'KBO-Dia-Gothic_bold';

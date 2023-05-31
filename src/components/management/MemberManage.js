@@ -41,49 +41,51 @@ const MemberManage = () => {
   };
 
   return (
-    <div className="member-container">
-      <h2>회원 정보</h2>
-      <div className="member-info">
-        <label className="info-label">
-          이름:
-          <input
-            className="info-input"
-            type="text"
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
-          />
-        </label>
-        <button onClick={handleSearch}>검색</button>
-        <button onClick={handleReset}>초기화</button>
-      </div>
+    <div className="container">
+      <div className="member-container">
+        <h2>회원 정보</h2>
+        <div className="member-info">
+          <label className="info-label">
+            이름 : {' '}
+            <input
+              className="info-input"
+              type="text"
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+            />
+          </label>
+          <button onClick={handleSearch}>검색</button>
+          <button onClick={handleReset}>초기화</button>
+        </div>
 
-      <div className="table-container">
-        <table className="member-table">
-          <thead>
-            <tr>
-              <th>이름</th>
-              <th>성별</th>
-              <th>이메일</th>
-            </tr>
-          </thead>
-          <tbody>
-            {memberInfo.length > 0 ? (
-              memberInfo.map((member, index) => (
-                <tr key={index}>
-                  <td>{member.name}</td>
-                  <td>{member.gender}</td>
-                  <td>{member.email}</td>
-                </tr>
-              ))
-            ) : (
+        <div className="table-container">
+          <table className="member-table">
+            <thead>
               <tr>
-                <td colSpan="3" className="no-matching-info">
-                  일치하는 회원 정보가 없습니다.
-                </td>
+                <th>이름</th>
+                <th>성별</th>
+                <th>이메일</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {memberInfo.length > 0 ? (
+                memberInfo.map((member, index) => (
+                  <tr key={index}>
+                    <td>{member.name}</td>
+                    <td>{member.gender}</td>
+                    <td>{member.email}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="3" className="no-matching-info">
+                    일치하는 회원 정보가 없습니다.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

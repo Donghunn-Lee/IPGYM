@@ -13,6 +13,7 @@ const MyPage = () => {
   const token = localStorage.getItem("token");
   const [userName, setUserName] = useState("");
 
+  
 
   useEffect(() => {
    loadName();
@@ -26,7 +27,7 @@ const MyPage = () => {
     })
     .then((response)=>{
       console.log(response.data);
-      setUserName(response.data.name)
+      setUserName(response.data.name);
     })
     .catch((error) => console.log(error));
   }
@@ -85,15 +86,11 @@ const MyPage = () => {
       })
       .then((response) => {
         console.log(response.data);
-        setReservationHistory([response.data]);
+        setReservationHistory(response.data);
         console.log(reservationHistory);
       })
       .catch((error) => console.log(error));
   };
-
-  useEffect(() => {
-    handleReservationHistory();
-  }, []);
 
   return (
     <div className="container">
@@ -137,16 +134,15 @@ const MyPage = () => {
         {reservationHistory.map((reservation, index) => (
           <div
             key={index}
-            className={`reservation-item ${
-              reservation.date < getCurrentDate() ? "past" : "current"
-            }`}
+            className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
           >
             <p>
-              일시: {reservation.reservationTime[0]}년{" "}
+              예약 일시 : {reservation.reservationTime[0]}년{" "}
               {reservation.reservationTime[1]}월{" "}
               {reservation.reservationTime[2]}일{" "}
-              {reservation.reservationTime[3]}시
+              {reservation.reservationTime[3]}{' ~ '}{reservation.reservationTime[3]+1}시
             </p>
+            {/* <p>예약 일시 : {reservation.reservationTime}</p> */}
             <p>담당 트레이너: {reservation.trainerName}</p>
           </div>
             ))}
