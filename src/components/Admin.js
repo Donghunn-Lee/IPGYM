@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
+import LogoutButton from "./LogoutButton";
 
 const Admin = () => {
   const handleButtonClick = (feature) => {
@@ -9,7 +10,6 @@ const Admin = () => {
 
   return (
     <div className="main-page">
-      
       <div className="button-container">
         {/* <NavLink exact to="/login" activeClassName="active">
              <Button text="로그인" onClick={() => handleButtonClick("로그인")} />
@@ -30,6 +30,7 @@ const Admin = () => {
             onClick={() => handleButtonClick("헬스장 이용권")}
           />
         </NavLink>
+        <LogoutButton />
       </div>
     </div>
   );
