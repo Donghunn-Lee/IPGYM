@@ -100,14 +100,7 @@ const MyPage = () => {
       </div>
 
       <div className="exercise-goal">
-        <h2>운동 목적</h2>
-        <select value={exerciseGoal} onChange={handleGoalChange}>
-          <option value="">선택하세요</option>
-          <option value="건강">건강</option>
-          <option value="바디프로필">바디프로필</option>
-          <option value="몸매 유지">몸매 유지</option>
-          <option value="다이어트">다이어트</option>
-        </select>
+        
 
         <h3 style={{color:"black"}} className="usage-heading">이용 기록</h3>
         <p className="usage-allday">사용 일 수 : {usageHistory.length}일</p>
