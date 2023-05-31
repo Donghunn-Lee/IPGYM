@@ -7,7 +7,7 @@ function PT() {
   const [reservationDate, setReservationDate] = useState('');
   const [reservation, setReservation] = useState('');
   const [reservationHistory, setReservationHistory] = useState([]);
-  const [trainerlist, setTrainerList] = useState([]); // PT 트레이너 목록
+  const [trainerlist, setTrainerList] = useState([]);
   const [reservationTrainerId, setReservationTrainerId] = useState("");
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   // const [showConfirmCheck, setShowConfirmCheck] = useState(false);

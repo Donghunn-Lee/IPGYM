@@ -5,13 +5,28 @@ import "./MemberManage.css";
 const MemberManage = () => {
   const [searchName, setSearchName] = useState("");
   const [memberInfo, setMemberInfo] = useState([]);
+  const [membership, setMembership] = useState([]);
   const token = localStorage.getItem('token');
 
   useEffect(()=>{
-    loadAllMembers()
+    loadAllMembers();
+    loadGymMembership();
   },[])
 
   const loadAllMembers = () => {
+    axios.get("http://43.200.171.222:8080/member/admin", {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      }
+    })
+      .then(response => {
+        console.log(response);
+        setMemberInfo(response.data)
+      })
+      .catch(error => console.log(error));
+  };
+
+  const loadGymMembership = () => {
     axios.get("http://43.200.171.222:8080/api/admin/GymMemberships", {
       headers: {
         Authorization: 'Bearer ' + token,
@@ -22,7 +37,9 @@ const MemberManage = () => {
         // setMemberInfo(response.data)
       })
       .catch(error => console.log(error));
-  };
+  }
+
+
 
   const handleSearch = () => {
    

@@ -14,17 +14,17 @@ const Admin = () => {
         {/* <NavLink exact to="/login" activeClassName="active">
              <Button text="로그인" onClick={() => handleButtonClick("로그인")} />
            </NavLink> */}
-        <NavLink exact to="/membermanage" activeClassName="active">
+        <NavLink exact to="/admin/membermanage" activeClassName="active">
           <Button
             text="회원관리"
             onClick={() => handleButtonClick("마이페이지")}
           />
         </NavLink>
 
-        <NavLink exact to="/ptmanage" activeClassName="active">
+        <NavLink exact to="/admin/ptmanage" activeClassName="active">
           <Button text="PT 관리" onClick={() => handleButtonClick("PT")} />
         </NavLink>
-        <NavLink exact to="/MSuse" activeClassName="active">
+        <NavLink exact to="/admin/MSuse" activeClassName="active">
           <Button
             text="헬스장 통계"
             onClick={() => handleButtonClick("헬스장 이용권")}
