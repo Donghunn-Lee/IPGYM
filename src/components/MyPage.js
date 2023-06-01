@@ -13,6 +13,14 @@ const MyPage = () => {
   const [reservationHistoryCheck, setReservationHistoryCheck] = useState([]);
   const token = localStorage.getItem("token");
   const [userName, setUserName] = useState("");
+  const [showEditModal, setShowEditModal]=useState(false);
+  const [showDeleteModal, setShowDeleteModal]=useState(false);
+  const [trainerlist, setTrainerList] = useState([]);
+  const [editedReservation, setEditedReservation] = useState('');
+  const [targetReservation, setTargetReservation] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedTrainer, setSelectedTrainer] = useState("");
   const Navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -24,7 +32,7 @@ const MyPage = () => {
 
   const loadName = () => {
     axios
-      .get("http://43.200.171.222:8080/member/meaaaaa", {
+      .get("http://43.200.171.222:8080/me", {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -39,6 +47,20 @@ const MyPage = () => {
   const handleGoalChange = (e) => {
     setExerciseGoal(e.target.value);
   };
+
+  useEffect(() => {
+    axios
+      .get("http://43.200.171.222:8080/api/trainer", {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        }
+      })
+      .then(response => {
+        setTrainerList(response.data);
+        console.log(response.data);
+      })
+      .catch(error => console.log(error));
+  }, []);
 
   // 헬스장 이용내역
   const membershipData = {
@@ -69,7 +91,6 @@ const MyPage = () => {
     const clickedReservation = reservationHistory[index];
     showPopup(clickedReservation);
   };
-  
 
   useEffect(() => {
     handleReservationHistory();
@@ -117,28 +138,84 @@ const MyPage = () => {
   };
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [selectedReservation, setSelectedReservation] = useState(null);
-  
+
   const showPopup = (reservation) => {
     setSelectedReservation(reservation);
     setPopupVisible(true);
   };
-  
+
   const hidePopup = () => {
     setPopupVisible(false);
   };
-  
-  const handleReservationUpdate = (updatedReservation) => {
-    // 여기에 예약 정보를 업데이트하는 API 요청 코드를 추가해주세요
-    // 성공적으로 업데이트가 완료되면 알림창을 표시해줄 수 있습니다
-    // 예: showNotification("예약이 수정되었습니다.");
+
+  const handleReservationUpdate = (targetReservation) => {
+    const selectedDateTime = new Date(selectedDate);
+    selectedDateTime.setHours(selectedTime, 0, 0, 0);
+    const formattedDateTime = [
+      selectedDateTime.getFullYear(),
+      selectedDateTime.getMonth() + 1,
+      selectedDateTime.getDate(),
+      selectedDateTime.getHours(),
+      selectedDateTime.getMinutes()
+    ];
+    console.log(selectedDate);
+    console.log(selectedTime);
+    console.log(formattedDateTime);
+    console.log(selectedTrainer);
+    axios
+      .patch(`http://43.200.171.222:8080/api/reservations/${targetReservation.id}`, {
+        reservationTime: formattedDateTime,
+        reservationTrainerId: selectedTrainer
+      }, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
+      .then(response => {
+        handleReservationHistory();
+        console.log(response);
+        // setShowEditModal(false);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
-  
-  const handleReservationCancel = (reservationId) => {
-    // 여기에 예약을 취소하는 API 요청 코드를 추가해주세요
-    // 성공적으로 예약이 취소되면 알림창을 표시해줄 수 있습니다
-    // 예: showNotification("예약이 취소되었습니다.");
+
+  const handleReservationCancel = (targetReservation) => {
+    axios
+      .delete(`http://43.200.171.222:8080/api/reservations${targetReservation.id}`, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
+      .then(response => {
+        handleReservationHistory();
+        console.log(response);
+        setShowDeleteModal(false);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
-  
+
+useEffect(()=>{
+  console.log(targetReservation);
+},[targetReservation])
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const handleTimeChange = (event) => {
+    const timeValue = parseInt(event.target.value, 10);
+    setSelectedTime(timeValue);
+  };
+
+  const handleTrainerChange = (event) => {
+    setSelectedTrainer(event.target.value);
+  };
+
+ 
   
   return (
     <>
@@ -151,7 +228,7 @@ const MyPage = () => {
 </button>
     <div className="container">
       <div className="header">
-        <div>{userName}회원님😊</div>
+        <div>{userName} 회원님😊</div>
       </div>
       
 
@@ -195,18 +272,41 @@ const MyPage = () => {
               {reservation.reservationTime && (
                 <>
                   <p>
-                    예약 일시 :{" "}
+                    일시 :{" "}
                     {`${reservation.reservationTime[0]}년 ${
                       reservation.reservationTime[1]
                     }월 ${reservation.reservationTime[2]}일 ${
                       reservation.reservationTime[3]
-                    } ~ ${reservation.reservationTime[3] + 1}시`}
+                    }~${reservation.reservationTime[3] + 1}시`}
                   </p>
                   <p>담당 트레이너 : {reservation.trainerName}</p>
+                  <div>
+                    <button onClick={() => {setShowEditModal(true);setTargetReservation(reservation)}}>
+                      수정
+                    </button>
+                    <button onClick={() => {setShowDeleteModal(true);setTargetReservation(reservation)}}>
+                      삭제
+                    </button>
+                  </div>
                 </>
               )}
             </div>
           ))}
+          
+          {showDeleteModal && (
+            <div className="modalll">
+              <div className="modalll-content">
+                <h3>예약 취소</h3>
+                {/* <p>{targetReservation.reservationTime}</p>
+                <p>{targetReservation.trainerName}</p> */}
+                <p>PT예약을 취소하시겠습니까?</p>
+                <div className="modalll-buttons">
+                  <button onClick={()=>handleReservationCancel(targetReservation)}>확인</button>
+                  <button onClick={() => setShowDeleteModal(false)}>취소</button>
+                </div>
+              </div>
+            </div>
+          )}
       </div>
     </div>
     </>

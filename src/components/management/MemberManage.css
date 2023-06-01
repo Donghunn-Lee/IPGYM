@@ -1,48 +1,170 @@
-.container{
-  display:flex;
+.container {
+  display: flex;
   align-items: center;
   max-width: 700px;
 }
 
 .member-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   background-color: white;
   width: 100%;
-  margin :0px;
-  padding:0px;
+  margin: 0;
+  padding: 0;
 }
 
-.member-container h2{
-  color:black;
+.member-container h2 {
+  color: black;
 }
 
-.member-info{
+.member-info {
   background-color: gray;
-  padding : 5px;
+  padding: 5px;
 }
 
-.member-container label{
-  color:black;
+.member-container label {
+  color: black;
   padding: 5px;
 }
 
 .table-container {
-  color:black;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
 }
 
-.member-table {
-  width:580px;
+.aaa{
+  
+  background-color: #2196f3;
+  border: none;
+  border-radius: 5px;
+  font-family: KBO-Dia-Gothic_bold;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding :4px 8px;
+  color: #fff;
+  cursor: pointer;
+  width:50px;
+  transition: background-color 0.3s ease;
+
 }
 
-.no-matching-info{
-  
+.member-table {
+  width: 580px;
+}
+
+.no-matching-info {
   padding-top: 10px;
   font-size: 20px;
+}
+
+/* 모달 스타일 */
+.modallll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modallll-content {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+
+.modallll-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modallll-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* .modallll-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+.modallll-button:hover {
+  background-color: #0056b3;
+}
+.modallll-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.modallll-label select,
+.modallll-label input[type="number"] {
+  /* width:30px; */
+  flex: 1;
+  padding: 8px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modallll-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modallll-button {
+  margin : 10px;
+  align-items: center;
+  display: flex;
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width:100%;
+}
+
+.modallll-button:hover {
+  background-color: #0056b3;
+}
+
+.modallll-close {
+  align-self: flex-end;
+  cursor: pointer;
+  text-align: right;
 }

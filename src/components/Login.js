@@ -21,10 +21,10 @@ const Login = (props) => {
       console.log(response);
       localStorage.setItem('token',response.data.accessToken);
       localStorage.setItem('user',email);
-      console.log(localStorage.getItem('user'))
+      console.log(localStorage.getItem('token'))
       
       // setIsAuthenticated(true);
-      if (email =='admin') {
+      if (email =='admin@1') {
         setPath('/admin')
         console.log(path);
       }

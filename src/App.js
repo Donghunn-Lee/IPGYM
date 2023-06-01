@@ -7,7 +7,6 @@ import PT from "./components/PT";
 import MembershipManagement from "./components/MembershipManagement";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import AdminLogin from "./components/AdminLogin";
 import Admin from "./components/Admin";
 import MemberManage from "./components/management/MemberManage";
 import PTManage from "./components/management/PTManage";
@@ -18,7 +17,7 @@ import Quotes from "./components/Quotes";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(true);
-//명언 추가 관련
+
   const [quoteKey, setQuoteKey] = useState(window.location.pathname);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const App = () => {
   }, [quoteKey]);
 
   const redirectPath = isAuthenticated ? "/mainpage" : "/login";
-  // const adminPath = isAdmin ? "/admin" : "/adminlogin";
+  
 
   return (
     <BrowserRouter>
@@ -53,11 +52,10 @@ const App = () => {
             <Route path="/pt" element={<PT />} />
             <Route path="/membership" element={<MembershipManagement />} />
             <Route path="/mainpage" element={isAuthenticated ? <MainPage /> : <Navigate to="/login" />}/>
-            {/* <Route path="/adminlogin" element={<AdminLogin setIsAdmin={setIsAdmin} IsAdmin={isAdmin} />}/> */}
             <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/adminlogin" />}/>
-            <Route path="/membermanage" element={<MemberManage />} />
-            <Route path="/ptmanage" element={<PTManage />} />
-            <Route path="/msuse" element={<Msuse />} />
+            <Route path="/admin/membermanage" element={<MemberManage />} />
+            <Route path="/admin/ptmanage" element={<PTManage />} />
+            <Route path="/admin/msuse" element={<Msuse />} />
             <Route path="/" element={<Navigate to={redirectPath} />} />
           </Routes>
         </div>
