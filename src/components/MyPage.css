@@ -10,63 +10,61 @@
   padding: 20px;
   background-color: white;
   border-radius: 15px;
-  }
-  
-  .header {
+}
+
+.header {
   text-align: center;
   margin-bottom: 20px;
-  }
-  
-  .exercise-goal {
+}
+
+.exercise-goal{
   background-color: rgb(86, 88, 119);
-  width: 80%;
-  padding: 2rem;
-  margin: 4px;
+  width:80%;
+  padding:3rem;
+  margin:4px;
   margin-bottom: 2rem;
   border-radius: 15px;
-  }
-  
-  .exercise-goal h2 {
+}
+
+.exercise-goal h2{
   margin-bottom: 10px;
-  }
-  
-  .exercise-goal select {
+}
+
+.exercise-goal select{
   width: 150px;
   padding: 5px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-top: 5px;
-  }
-  
-  .usage-heading {
+}
+
+.usage-heading {
   font-size: 40px;
   font-weight: bold;
   margin-top: 24px;
   margin-bottom: 12px;
-  }
   
-  .pt-history {
-  font-size: 17px;
-  width: 80%;
-  padding: 2rem;
-  margin: 4px;
+}
+
+.pt-history {
+  margin-bottom: 20px;
+  /* padding: 10px; */
   background-color: #3f3f3f;
   border-radius: 8px;
+  width: 50%;
   max-width: 800px;
   background-color: rgb(86, 88, 119);
-  }
-  
-  .pt-history h2 {
-  padding: 20px;
-  margin: 0;
-  }
-  
-  .reservation-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+}
+
+
+
+.pt-history h2 {
+padding: 20px;
+  margin:0;
+}
+
+.reservation-item {
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -79,8 +77,8 @@
   }
   
   .reservation-item.past {
-  color: #888;
-  }
+  color: #888;  }
+
   
   .reservation-item button {
   background-color: #2196f3;
@@ -96,7 +94,7 @@
   }
 
   .modalll {
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 50%;
@@ -167,3 +165,28 @@
     width: 100%;
     margin-bottom: 10px;
   }
+
+.goBackButton {
+  position: absolute;
+  top: 30px;
+  left: 35px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  font-size: 18px;
+  background-color: white;
+  padding : 6px;
+  font-family: KBO-Dia-Gothic_bold;
+
+}
+
+.goBackButton svg {
+  width: 20px;
+  height: 20px;
+  fill: #000000;
+  margin-right: 8px;
+}

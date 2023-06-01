@@ -55,9 +55,9 @@ const App = () => {
             <Route path="/mainpage" element={isAuthenticated ? <MainPage /> : <Navigate to="/login" />}/>
             {/* <Route path="/adminlogin" element={<AdminLogin setIsAdmin={setIsAdmin} IsAdmin={isAdmin} />}/> */}
             <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/adminlogin" />}/>
-            <Route path="/admin/membermanage" element={<MemberManage />} />
-            <Route path="/admin/ptmanage" element={<PTManage />} />
-            <Route path="/admin/msuse" element={<Msuse />} />
+            <Route path="/membermanage" element={<MemberManage />} />
+            <Route path="/ptmanage" element={<PTManage />} />
+            <Route path="/msuse" element={<Msuse />} />
             <Route path="/" element={<Navigate to={redirectPath} />} />
           </Routes>
         </div>

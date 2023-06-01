@@ -49,15 +49,17 @@
   .pt-manage th,
   .pt-manage td {
     padding: 8px;
+    border: 1px solid #ccc;
     border: 1px solid #fcfcfc;
   }
   
   .pt-manage th {
     background-color: #f0f0f0;
+    background-color: #f0f0f0;
   }
   
-  .pt-manage tbody tr:nth-child() {
-    background-color: #ffffff;
+  .pt-manage tbody tr:nth-child(even) tr:nth-child() {
+    background-color: #f9f9f9;
   }
 
   .reservation-item {
@@ -75,7 +77,7 @@
     color: #888;
   }
 
-  .modall {
+  .modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -87,27 +89,27 @@
     justify-content: center;
   }
   
-  .modall-content {
+  .modal-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 4px;
   }
   
-  .modall h3 {
+  .modal h3 {
     margin-top: 0;
     color: #333;
   }
   
-  .modall p {
+  .modal p {
     margin-bottom: 10px;
   }
   
-  .modall-buttons {
+  .modal-buttons {
     display: flex;
     justify-content: flex-end;
   }
   
-  .modall-buttons button {
+  .modal-buttons button {
     font-family: KBO-Dia-Gothic_bold;
     font-size: 16px;
     padding: 4px 12px;
@@ -119,11 +121,11 @@
     margin-left: 10px;
   }
   
-  .modall-buttons button:last-child {
+  .modal-buttons button:last-child {
     margin-left: 0;
   }
   
-  .modall input[type="text"] {
+  .modal input[type="text"] {
     padding: 6px 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
