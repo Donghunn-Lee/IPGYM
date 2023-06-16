@@ -51,7 +51,7 @@ const Signup = (props) => {
         />
       </label>
       <div className="gender">
-        <label className="=gender">
+        <label style={{color:"black"}} className="=gender">
           성별:
           <input
             type="radio"
@@ -61,7 +61,7 @@ const Signup = (props) => {
           />
           남성
         </label>
-        <label>
+        <label style={{color:"black"}}>
           <input
             type="radio"
             value="Female"

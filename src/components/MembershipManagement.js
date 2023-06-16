@@ -1,15 +1,41 @@
 import React, { useState, useEffect } from "react";
 import "./MembershipManagement.css";
 import {useNavigate} from "react-router-dom";
-
+import axios from "axios";
 
 const MembershipManagement = () => {
   const [expirationDate, setExpirationDate] = useState("");
-  const [daysRemaining, setDaysRemaining] = useState(0);
+  const [daysRemaining, setDaysRemaining] = useState();
   const [usageHistory, setUsageHistory] = useState([]);
   const [selectedUsage, setSelectedUsage] = useState(null);
-
+  const [data, setdata] = useState('');
   const Navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+
+
+  useEffect(()=>{
+    haneldtime()
+  },[]) 
+
+  
+const haneldtime = () => {
+  axios
+  .get("http://43.200.171.222:8080/me", {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+  .then((response) => {
+    console.log(response);
+    setdata(response.data)
+  })
+  .catch((error) => console.log(error));
+
+}
+
+
+
 
   const handleGoBack = () => {
     Navigate('/MainPage');
@@ -38,15 +64,15 @@ const MembershipManagement = () => {
 
     // 남은 일 수 계산
     const today = new Date();
-    const expiration = new Date(membershipData.expirationDate);
+    const expiration = new Date(data.gymMembershipEnd);
     const diffTime = Math.abs(expiration - today);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     setDaysRemaining(diffDays);
   }, []);
 
-  const handleUsageClick = (index) => {
-    setSelectedUsage(index === selectedUsage ? null : index);
-  };
+  // const handleUsageClick = (index) => {
+  //   setSelectedUsage(index === selectedUsage ? null : index);
+  // };
 
   return (
     <>
@@ -61,7 +87,7 @@ const MembershipManagement = () => {
         <h2 className="membership-heading">헬스장 이용권</h2>
         <div className="membership-info">
           <p className="info-label">회원권 만기 날짜:</p>
-          <p className="info-value">{expirationDate}</p>
+          <p className="info-value"></p>
         </div>
         <div className="membership-info">
           <p className="info-label">만기까지 남은 날짜:</p>

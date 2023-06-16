@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MyPage.css";
-import {useNavigate} from "react-router-dom";
 
 const MyPage = () => {
   const [exerciseGoal, setExerciseGoal] = useState("");
@@ -21,11 +20,7 @@ const MyPage = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedTrainer, setSelectedTrainer] = useState("");
-  const Navigate = useNavigate();
 
-  const handleGoBack = () => {
-    Navigate('/MainPage');
-  };
   useEffect(() => {
     loadName();
   }, []);
@@ -136,6 +131,7 @@ const MyPage = () => {
       })
       .catch((error) => console.log(error));
   };
+
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [selectedReservation, setSelectedReservation] = useState(null);
 
@@ -218,24 +214,15 @@ useEffect(()=>{
  
   
   return (
-    <>
-    <button className="goBackButton" onClick={handleGoBack}>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-  </svg>
-  뒤로가기
-</button>
     <div className="container">
       <div className="header">
         <div>{userName} 회원님😊</div>
       </div>
-      
 
       <div className="exercise-goal">
-        
-
-        <h3 style={{color:"black"}} className="usage-heading">이용 기록</h3>
+        <h3 style={{ color: "black" }} className="usage-heading">
+          이용 기록
+        </h3>
         <p className="usage-allday">사용 일 수 : {usageHistory.length}일</p>
         <ul className="usage-history">
           {usageHistory.map((usage, index) => (
@@ -292,7 +279,43 @@ useEffect(()=>{
               )}
             </div>
           ))}
-          
+          {showEditModal && (
+            <div className="modalll">
+              <div className="modalll-content">
+                <form>
+                  <label>
+                    날짜
+                    <input type="date" min={getCurrentDate()} value={selectedDate} onChange={handleDateChange} />
+                  </label>
+                  <label>
+                    시간
+                    <select value={selectedTime} onChange={handleTimeChange}>
+                      <option value="">예약 시간(9 ~ 21)</option>
+                      {Array.from({ length: 13 }, (_, index) => index + 9).map((hour) => (
+                        <option key={hour} value={`${hour}:00`}>
+                          {`${hour}:00`}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    담당 트레이너
+                    <select value={selectedTrainer} onChange={handleTrainerChange}>
+                      <option value="">담당 트레이너 선택</option>
+                      {trainerlist.map(trainer => (
+                      <option key={trainer.id} value={trainer.id}>{trainer.name}</option>
+                    ))}
+                    </select>
+                  </label>
+                </form>
+                <p>PT예약을 수정하시겠습니까?</p>
+                <div className="modalll-buttons">
+                  <button onClick={() => handleReservationUpdate(targetReservation)}>수정</button>
+                  <button onClick={() => setShowEditModal(false)}>취소</button>
+                </div>
+              </div>
+            </div>
+          )}
           {showDeleteModal && (
             <div className="modalll">
               <div className="modalll-content">
@@ -309,7 +332,6 @@ useEffect(()=>{
           )}
       </div>
     </div>
-    </>
   );
 };
 

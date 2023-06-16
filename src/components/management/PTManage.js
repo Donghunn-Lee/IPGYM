@@ -70,32 +70,11 @@ function PTManage() {
   }, [searchValue]);
 
   const handleDelete = () => {
-    // axios.delete(`http://43.200.171.222:8080/api/admin/reservations/${event.id}`, {
-    //   headers: {
-    //     'Authorization': 'Bearer ' + token
-    //   }
-    // })
-    // .then(response => {
-    //   // 삭제한 이벤트를 제외한 이벤트 목록으로 상태 업데이트 
-    //   const newEvents = events.filter(e => e.id !== event.id);
-    //   setEvents(newEvents);
-    //   // saveEventsToLocalStorage(newEvents); // 로컬 스토리지에 저장
-    //   setSelectedEvent(null);
-    //   setShowEventDetailModal(false);
-    // })
-    // .catch(error => {
-    //   console.error(error);
-    // });
-    // setShowDeleteModal(false);
-    // // axios.delete(...) 등의 로직을 추가하세요.
+   
   };
 
   const handleEdit = () => {
-    // // 예약 수정 모달을 띄우고, 수정할 예약 정보를 입력하도록 처리하세요.
-    // // 이후 해당 예약 정보를 삭제하고, 수정된 예약 정보를 추가하는 로직을 구현하세요.
-    // // axios.delete(...) 및 axios.post(...) 등의 로직을 추가하세요.
-    // setShowEditModal(false);
-    // setSelectedReservation(null);
+    
   };
 
   return (<>
