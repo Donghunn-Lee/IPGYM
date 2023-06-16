@@ -49,17 +49,15 @@
   .pt-manage th,
   .pt-manage td {
     padding: 8px;
-    border: 1px solid #ccc;
-    border: 1px solid #fcfcfc;
+    border: 1px solid #808080;
   }
   
   .pt-manage th {
-    background-color: #f0f0f0;
-    background-color: #f0f0f0;
+    background-color: #c0c0c0;
   }
   
-  .pt-manage tbody tr:nth-child(even) tr:nth-child() {
-    background-color: #f9f9f9;
+  .pt-manage tbody {
+    background-color: #ffffff;
   }
 
   .reservation-item {

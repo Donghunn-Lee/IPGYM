@@ -41,7 +41,7 @@ const healthQuotes = [
 
 
   useEffect(() => {
-    // 페이지가 로드될 때마다 랜덤 명언 선택
+    
     const randomIndex = Math.floor(Math.random() * healthQuotes.length);
     const selectedQuote = healthQuotes[randomIndex];
     setRandomQuote(selectedQuote);
@@ -49,8 +49,8 @@ const healthQuotes = [
 
   return (
     <div className='quotes'>
-      {/* <h1> 헬스 명언 </h1> */}
-      <p style={{marginBottom:"40px", fontSize:"18px"}}>{randomQuote}</p>
+      
+      <p style={{marginBottom:"40px", fontSize:"22px"}}>{randomQuote}</p>
     </div>
   );
 };

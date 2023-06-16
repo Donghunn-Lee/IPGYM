@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PT.css';
+import {useNavigate} from "react-router-dom";
 
 function PT() {
   const [PTsubscription, setPTsubscription] = useState('');
@@ -12,6 +13,11 @@ function PT() {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   // const [showConfirmCheck, setShowConfirmCheck] = useState(false);
   
+  const Navigate = useNavigate();
+
+  const handleGoBack = () => {
+    Navigate('/MainPage');
+  };
 
   const token = localStorage.getItem('token');
 
@@ -61,7 +67,7 @@ function PT() {
       axios
         .post("http://43.200.171.222:8080/api/reservations", {
           reservationTime: reservation,
-          reservationTrainerId: reservationTrainerId // 선택한 트레이너 ID 사용
+          reservationTrainerId: reservationTrainerId
         }, {
           headers: {
             Authorization: 'Bearer ' + token
@@ -70,9 +76,9 @@ function PT() {
         .then(response => {
           handleReservationHistory();
           console.log(response);
-          setReservationDate(""); // 예약 날짜 초기화
-          setReservation(""); // 예약 시간 초기화
-          setReservationTrainerId(""); // 선택한 트레이너 초기화
+          setReservationDate(""); 
+          setReservation(""); 
+          setReservationTrainerId(""); 
           setShowConfirmModal(false);
         })
         .catch(error => {
@@ -139,6 +145,14 @@ function PT() {
 
 
   return (
+    <>
+    <button className="goBackButton" onClick={handleGoBack}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+  뒤로가기
+</button>
     <div className="pt-component">
       <div className="pt-box">
         <h2>남은 PT 이용권</h2>
@@ -189,8 +203,8 @@ function PT() {
         </button>
 
         {showConfirmModal && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modaal">
+          <div className="modaal-content">
             <h3>예약 확인</h3>
             <p>
               예약 일시 : {reservation[0]}년{" "}
@@ -199,7 +213,7 @@ function PT() {
               {reservation[3]}{' ~ '}{reservation[3]+1}시
             </p>
             <p>PT예약을 등록하시겠습니까?</p>
-            <div className="modal-buttons">
+            <div className="modaal-buttons">
               <button onClick={handlePTreservationSubmit}>확인</button>
               <button onClick={() => setShowConfirmModal(false)}>취소</button>
             </div>
@@ -208,6 +222,7 @@ function PT() {
       )}
       </div>
     </div>
+    </>
   );
 }
 

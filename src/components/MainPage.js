@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
+import LogoutButton from "./LogoutButton";
 import "./MainPage.css"; // CSS 파일 import
 
 const MainPage = () => {
@@ -10,7 +11,6 @@ const MainPage = () => {
 
   return (
     <div className="main-page">
-      
       <div className="button-container">
         <NavLink exact to="/mypage" activeClassName="active">
           <Button
@@ -18,7 +18,7 @@ const MainPage = () => {
             onClick={() => handleButtonClick("마이페이지")}
           />
         </NavLink>
-        
+
         <NavLink exact to="/pt" activeClassName="active">
           <Button text="PT 예약" onClick={() => handleButtonClick("PT")} />
         </NavLink>
@@ -33,6 +33,7 @@ const MainPage = () => {
         <NavLink exact to="/bmi" activeClassName="active">
           <Button text="BMI 계산기" onClick={() => handleButtonClick("BMI")} />
         </NavLink>
+        <LogoutButton />
       </div>
     </div>
   );

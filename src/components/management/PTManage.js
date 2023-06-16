@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./PTManage.css";
+import {useNavigate} from "react-router-dom";
 
 function PTManage() {
   const [reservations, setReservations] = useState([]);
@@ -9,6 +10,12 @@ function PTManage() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedReservation, setSelectedReservation] = useState(null);
   const [filteredReservations, setFilteredReservations] = useState([]);
+
+  const Navigate = useNavigate();
+
+  const handleGoBack = () => {
+    Navigate('/Admin');
+  };
 
   const token = localStorage.getItem('token');
 
@@ -63,35 +70,21 @@ function PTManage() {
   }, [searchValue]);
 
   const handleDelete = () => {
-    // axios.delete(`http://43.200.171.222:8080/api/admin/reservations/${event.id}`, {
-    //   headers: {
-    //     'Authorization': 'Bearer ' + token
-    //   }
-    // })
-    // .then(response => {
-    //   // 삭제한 이벤트를 제외한 이벤트 목록으로 상태 업데이트 
-    //   const newEvents = events.filter(e => e.id !== event.id);
-    //   setEvents(newEvents);
-    //   // saveEventsToLocalStorage(newEvents); // 로컬 스토리지에 저장
-    //   setSelectedEvent(null);
-    //   setShowEventDetailModal(false);
-    // })
-    // .catch(error => {
-    //   console.error(error);
-    // });
-    // setShowDeleteModal(false);
-    // // axios.delete(...) 등의 로직을 추가하세요.
+   
   };
 
   const handleEdit = () => {
-    // // 예약 수정 모달을 띄우고, 수정할 예약 정보를 입력하도록 처리하세요.
-    // // 이후 해당 예약 정보를 삭제하고, 수정된 예약 정보를 추가하는 로직을 구현하세요.
-    // // axios.delete(...) 및 axios.post(...) 등의 로직을 추가하세요.
-    // setShowEditModal(false);
-    // setSelectedReservation(null);
+    
   };
 
-  return (
+  return (<>
+    <button className="goBackButton" onClick={handleGoBack}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+    뒤로가기
+  </button>
     <div className='pt-manage'>
       <h2>PT 예약 관리</h2>
 
@@ -179,7 +172,7 @@ function PTManage() {
         </div>
       )}
     </div>
-  );
+ </> );
 }
 
 export default PTManage;

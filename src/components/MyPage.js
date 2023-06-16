@@ -19,7 +19,7 @@ const MyPage = () => {
 
   const loadName = () => {
     axios
-      .get("http://43.200.171.222:8080/member/meaaaaa", {
+      .get("http://43.200.171.222:8080/me", {
       
         headers: {
           Authorization: "Bearer " + token,
