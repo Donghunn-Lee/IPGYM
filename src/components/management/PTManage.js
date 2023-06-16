@@ -105,7 +105,7 @@ function PTManage() {
             <th>이름</th>
             <th>이메일</th>
             <th>예약 일시</th>
-            <th>트레이너</th>
+            <th>트레이너</th> 
             <th></th>
           </tr>
         </thead>
@@ -117,22 +117,21 @@ function PTManage() {
           ) : (
             filteredReservations.map((reservation, index) => {
               const reservationTime = reservation.reservationTime || [0, 0, 0, 0, 0];
-              return (
-                <tr
-                  key={index}
-                  className={`reservation-item ${reservation.date < getCurrentDate() ? "past" : "current"}`}
-                >
-                  <th>{reservation.memberName}</th>
-                  <th>{reservation.memberId}</th>
-                  <th>
+              return(
+                
+                  
+                <tr key={index}>
+                  <td>{reservation.memberName}</td>
+                  <td>{reservation.memberId}</td>
+                  <td>
                     {reservationTime[0]}년 {reservationTime[1]}월 {reservationTime[2]}일 {reservationTime[3] + 9} ~ {reservationTime[3] + 10}시
-                  </th>
-                  <th>{reservation.trainerName}</th>
-                  <th>
+                  </td>
+                  <td>{reservation.trainerName}</td>
+                  <td>
                     <button onClick={() => setShowEditModal(true)}>수정</button>
                     <button onClick={() => setShowDeleteModal(true)}>삭제</button>
-                  </th>
-                </tr>
+                  </td>
+                  </tr>
               );
             })
           )}
@@ -141,8 +140,8 @@ function PTManage() {
 
       {/* 삭제 확인 모달 */}
       {showDeleteModal && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modall">
+          <div className="modall-content">
             <h3>예약 삭제</h3>
             <p>정말 삭제하시겠습니까?</p>
             <div className="modal-buttons">
@@ -155,15 +154,15 @@ function PTManage() {
 
       {/* 수정 모달 */}
       {showEditModal && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modall">
+          <div className="modall-content">
             <h3>예약 수정</h3>
             <form onSubmit={handleEdit}>
               {/* 예약 정보 입력 폼을 구현하세요 */}
               {/* 예약 정보 입력 폼의 값은 useState를 사용하여 관리하세요 */}
               {/* 예약 정보를 제출하면 handleEdit 함수가 호출되도록 처리하세요 */}
               {/* 수정된 예약 정보를 서버로 전송하여 업데이트하세요 */}
-              <div className="modal-buttons">
+              <div className="modall-buttons">
                 <button type="submit">저장</button>
                 <button onClick={() => setShowEditModal(false)}>취소</button>
               </div>
